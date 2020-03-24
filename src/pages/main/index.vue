@@ -23,7 +23,7 @@
 
 <script lang="ts">
 	import Vue from 'vue';	
-	import {mapState, mapMutations} from 'vuex';
+	import {mapGetters, mapMutations} from 'vuex';
 	export default Vue.extend({
 		data() {
 			return {
@@ -50,7 +50,7 @@
 				})
 			}
 		},
-		computed: mapState(['forcedLogin', 'hasLogin', 'userName']),
+		computed: mapGetters(['forcedLogin', 'hasLogin', 'userName']),
 		methods: {
 			...mapMutations(['login']),
 		}

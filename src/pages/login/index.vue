@@ -30,9 +30,9 @@
 </template>
 <script>
 import Vue from 'vue';
-import {mapState, mapMutations} from 'vuex';
-import mInput from '../../components/m-input.vue';
-import service from '../../service.ts';
+import {mapGetters, mapMutations} from 'vuex';
+import mInput from '@/components/m-input.vue';
+import service from '@/service.ts';
 export default Vue.extend({
   components: {
     mInput
@@ -47,7 +47,7 @@ export default Vue.extend({
       isDevtools: false,
     }
   },
-  computed: mapState(['forcedLogin']),
+  computed: mapGetters(['forcedLogin']),
   methods: {
     ...mapMutations(['login']),
     initProvider() {

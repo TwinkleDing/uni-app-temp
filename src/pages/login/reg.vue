@@ -22,8 +22,8 @@
 
 <script>
   import Vue from 'vue';
-	import service from '../../service.ts';
-	import mInput from '../../components/m-input.vue';
+	import service from '@/service.ts';
+	import mInput from '@/components/m-input.vue';
 
 	export default Vue.extend({
 		components: {
