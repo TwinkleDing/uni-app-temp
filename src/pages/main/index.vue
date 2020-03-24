@@ -23,19 +23,36 @@
 
 <script lang="ts">
 	import Vue from 'vue';	
+	import {mapState, mapMutations} from 'vuex';
 	export default Vue.extend({
 		data() {
 			return {
 				title: 'Hello',
-				hasLogin: false,
-				userName: '123'
 			}
 		},
 		onLoad() {
-
+			if(!this.hasLogin) {
+				uni.showModal({
+					title: '未登录',
+					content: '未登录，请登录后继续',
+					showCancel: !this.forcedLogin,
+					success: (res) => {
+						if(this.forcedLogin) {
+							uni.reLaunch({
+								url: '../login/index'
+							})
+						}else {
+							uni.navigateTo({
+								url: '../login/index'
+							});
+						}
+					}
+				})
+			}
 		},
+		computed: mapState(['forcedLogin', 'hasLogin', 'userName']),
 		methods: {
-
+			...mapMutations(['login']),
 		}
 	});
 </script>

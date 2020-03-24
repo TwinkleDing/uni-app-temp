@@ -3,7 +3,25 @@
 		{
 			"path": "pages/main/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/login/reg",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		},
+		{
+			"path": "pages/login/pwd",
+			"style": {
+				"navigationBarTitleText": "忘记密码"
 			}
 		}
 	],
