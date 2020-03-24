@@ -44,7 +44,7 @@ export default Vue.extend({
       account: '',
       password: '',
       positionTop: 0,
-      isDevtools: false
+      isDevtools: false,
     }
   },
   computed: mapGetters(['forcedLogin']),
@@ -90,14 +90,14 @@ export default Vue.extend({
           title: '账号最短为 5 个字符'
         });
         return;
-      }
+      };
       if (this.password.length < 6) {
         uni.showToast({
           icon: 'none',
           title: '密码最短为 6 个字符'
         });
         return;
-      }
+      };
       /**
        * 下面简单模拟下服务端的处理
        * 检测用户账号密码是否在已注册的用户列表中
