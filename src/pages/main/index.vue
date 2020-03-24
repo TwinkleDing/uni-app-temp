@@ -31,28 +31,26 @@
 			}
 		},
 		onLoad() {
-			if(!this.hasLogin) {
-				uni.showModal({
-					title: '未登录',
-					content: '未登录，请登录后继续',
-					showCancel: !this.forcedLogin,
-					success: (res) => {
-						if(this.forcedLogin) {
-							uni.reLaunch({
-								url: '../login/index'
-							})
-						}else {
-							uni.navigateTo({
-								url: '../login/index'
-							});
-						}
-					}
-				})
-			}
+			this.loginOr();
 		},
 		computed: mapGetters(['forcedLogin', 'hasLogin', 'userName']),
 		methods: {
-			...mapMutations(['login']),
+			loginOr() {
+				if(!this.hasLogin) {
+					uni.showModal({
+						title: '未登录',
+						content: '未登录，请登录后继续',
+						showCancel: !this.forcedLogin,
+						success: (res) => {
+							if(this.forcedLogin) {
+								uni.reLaunch({url: '../login/index'});
+							}else {
+								uni.navigateTo({url: '../login/index'});
+							};
+						}
+					})
+				};
+			}
 		}
 	});
 </script>
