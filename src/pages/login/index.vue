@@ -44,7 +44,7 @@ export default Vue.extend({
       account: '',
       password: '',
       positionTop: 0,
-      isDevtools: false,
+      isDevtools: false
     }
   },
   computed: mapGetters(['forcedLogin']),
