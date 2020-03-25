@@ -41,15 +41,15 @@ export default Vue.extend({
     return {
       providerList: [],
       hasProvider: false,
-      account: '',
-      password: '',
+      account: 'admin',
+      password: 'admin',
       positionTop: 0,
       isDevtools: false,
     }
   },
   computed: mapGetters(['forcedLogin']),
   methods: {
-    ...mapMutations(['LOGOIN']),
+    ...mapMutations(['LOGIN']),
     initProvider() {
       const filters = ['weixin', 'qq', 'sinaweibo'];
       uni.getProvider({
@@ -91,10 +91,10 @@ export default Vue.extend({
         });
         return;
       };
-      if (this.password.length < 6) {
+      if (this.password.length < 5) {
         uni.showToast({
           icon: 'none',
-          title: '密码最短为 6 个字符'
+          title: '密码最短为 5 个字符'
         });
         return;
       };
@@ -130,7 +130,7 @@ export default Vue.extend({
                * 实际开发中，获取用户信息后，需要将信息上报至服务端。
                * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
                */
-              this.toMain(infoRes.userInfo.nickName);
+              // this.toMain(infoRes.userInfo.nickName);
             },
             fail() {
               uni.showToast({
@@ -158,7 +158,7 @@ export default Vue.extend({
       }
     },
     toMain(userName) {
-      this.LOGOIN(userName);
+      this.LOGIN(userName);
       /**
        * 强制登录时使用reLaunch方式跳转过来
        * 返回首页也使用reLaunch方式
@@ -170,7 +170,6 @@ export default Vue.extend({
       } else {
         uni.navigateBack();
       }
-
     }
   },
   onReady() {

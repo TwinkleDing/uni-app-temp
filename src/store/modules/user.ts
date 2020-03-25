@@ -4,7 +4,7 @@ const user = {
 		/**
 		 * 是否需要强制登录
 		 */
-		forcedLogin: false,
+		forcedLogin: true,
 		hasLogin: getStorage('hasLogin') || false,
 		userName: getStorage('userName') || ""
 	},
