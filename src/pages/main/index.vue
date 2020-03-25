@@ -33,7 +33,12 @@
 		onLoad() {
 			this.loginOr();
 		},
-		computed: mapGetters(['forcedLogin', 'hasLogin', 'userName']),
+		computed: {
+			...mapGetters(['forcedLogin', 'hasLogin', 'userName'])
+		},
+		mounted() {
+			console.log(this.userName)
+		},
 		methods: {
 			loginOr() {
 				if(!this.hasLogin) {
@@ -45,7 +50,7 @@
 							if(this.forcedLogin) {
 								uni.reLaunch({url: '../login/index'});
 							}else {
-								uni.navigateTo({url: '../login/index'});
+								// uni.navigateTo({url: '../main/index'});
 							};
 						}
 					})

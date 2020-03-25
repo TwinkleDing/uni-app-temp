@@ -1,20 +1,25 @@
+import {setStorage, getStorage, removeStorage} from '@/util/store';
 const user = {
   state: {
 		/**
 		 * 是否需要强制登录
 		 */
 		forcedLogin: false,
-		hasLogin: false,
-		userName: ""
+		hasLogin: getStorage('hasLogin') || false,
+		userName: getStorage('userName') || ""
 	},
 	mutations: {
-		login(state:any, userName:string) {
+		LOGIN: (state:any, userName:string)=> {
 			state.userName = userName || '新用户';
 			state.hasLogin = true;
+			setStorage('userName', state.userName);
+			setStorage('hasLogin', state.hasLogin);
 		},
-		logout(state:any) {
+		LOGOUT: (state:any)=> {
 			state.userName = "";
 			state.hasLogin = false;
+			removeStorage('userName', state.userName);
+			setStorage('hasLogin', state.hasLogin);
 		}
 	}
 };

@@ -49,7 +49,7 @@ export default Vue.extend({
   },
   computed: mapGetters(['forcedLogin']),
   methods: {
-    ...mapMutations(['login']),
+    ...mapMutations(['LOGOIN']),
     initProvider() {
       const filters = ['weixin', 'qq', 'sinaweibo'];
       uni.getProvider({
@@ -158,7 +158,7 @@ export default Vue.extend({
       }
     },
     toMain(userName) {
-      this.login(userName);
+      this.LOGOIN(userName);
       /**
        * 强制登录时使用reLaunch方式跳转过来
        * 返回首页也使用reLaunch方式
