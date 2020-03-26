@@ -18,6 +18,7 @@
 			<text>|</text>
 			<navigator url="./pwd">忘记密码</navigator>
 		</view>
+
 		<view class="oauth-row" v-if="hasProvider" v-bind:style="{top: positionTop + 'px'}">
 			<view class="oauth-image" v-for="provider in providerList" :key="provider.value">
 				<image :src="provider.image" @tap="oauth(provider.value)"></image>
@@ -39,8 +40,16 @@ export default Vue.extend({
   },
   data() {
     return {
-      providerList: [],
-      hasProvider: false,
+      providerList: [
+        {
+          image:'../../static/img/qq.png'
+        },{
+          image:'../../static/img/weixin.png'
+        },{
+          image:'../../static/img/sinaweibo.png'
+        }
+      ],
+      hasProvider: true,
       account: 'admin',
       password: 'admin',
       positionTop: 0,
@@ -66,6 +75,7 @@ export default Vue.extend({
             }
             this.hasProvider = true;
           }
+          console.log(res)
         },
         fail: (err) => {
           console.error('获取服务供应商失败：' + JSON.stringify(err));
@@ -145,9 +155,7 @@ export default Vue.extend({
         }
       });
     },
-    getUserInfo({
-      detail
-    }) {
+    getUserInfo({ detail }) {
       if (detail.userInfo) {
         this.toMain(detail.userInfo.nickName);
       } else {

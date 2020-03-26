@@ -14,7 +14,7 @@ export const getStorage = (key:string, sync:boolean = true) => {
   }
 };
 
-export const removeStorage = (key:string, sync:boolean = false) => {
+export const removeStorage = (key:string, sync?:boolean) => {
   if (sync) {
     return uni['removeStorageSync'](key)
   } else {
