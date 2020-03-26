@@ -34,6 +34,7 @@ import Vue from 'vue';
 import {mapGetters, mapMutations} from 'vuex';
 import mInput from '@/components/m-input.vue';
 import service from '@/service.ts';
+import {showToast1} from '@/util/index';
 export default Vue.extend({
   components: {
     mInput
@@ -94,10 +95,7 @@ export default Vue.extend({
        * 实际开发中，根据业务需要进行处理，这里仅做示例。
        */
       if (this.account.length < 5) {
-        uni.showToast({
-          icon: 'none',
-          title: '账号最短为 5 个字符'
-        });
+        showToast1({title:'账号最短为 5 个字符'});
         return;
       };
       if (this.password.length < 5) {
