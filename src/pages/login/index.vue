@@ -42,14 +42,14 @@ export default Vue.extend({
     return {
       providerList: [
         {
-          image:'../../static/img/qq.png'
-        },{
           image:'../../static/img/weixin.png'
+        },{
+          image:'../../static/img/qq.png'
         },{
           image:'../../static/img/sinaweibo.png'
         }
       ],
-      hasProvider: true,
+      hasProvider: false,
       account: 'admin',
       password: 'admin',
       positionTop: 0,
@@ -75,7 +75,6 @@ export default Vue.extend({
             }
             this.hasProvider = true;
           }
-          console.log(res)
         },
         fail: (err) => {
           console.error('获取服务供应商失败：' + JSON.stringify(err));
@@ -130,6 +129,7 @@ export default Vue.extend({
       }
     },
     oauth(value) {
+      console.log(value)
       uni.login({
         provider: value,
         success: (res) => {
