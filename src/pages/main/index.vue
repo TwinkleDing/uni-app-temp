@@ -23,8 +23,8 @@
 		<detail  type='star' />
 		<m-input class="m-input" type="text" clearable focus v-model="account" placeholder="请输入账号"></m-input>
 		<hm-balance-card :options="options"></hm-balance-card>
-		<m-icons type='star'></m-icons>
-		<uni-iconss type="contact" size="30"></uni-iconss>
+		<m-icons type='star' />
+		<uni-icon type="contact" size="30" />
 	</view>
 </template>
 
@@ -34,7 +34,7 @@
 	import Detail from './detail.vue';
 	import HmBalanceCard from '@/components/hm-balance-card/index.vue';
 	import MIcons from '@/components/m-icon/m-icon.vue';
-	import uniIconss from "@/components/uni-icons/uni-icons.vue";
+	import uniIcon from "@/components/uni-icons/uni-icons.vue";
 	import MInput from "@/components/m-input.vue";
 	export default Vue.extend({
 		name: 'Mains',
@@ -42,7 +42,7 @@
 			Detail,
 			HmBalanceCard,
 			MIcons,
-			uniIconss,
+			uniIcon,
 			MInput
 		},
 		data() {
