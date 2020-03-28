@@ -29,27 +29,44 @@
 			"style": {
 				"navigationBarTitleText": "忘记密码"
 			}
+		},
+		{
+			"path": "pages/picture/index",
+			"style": {
+				"navigationBarTitleText": "看图"
+			}
+		},
+		{
+			"path": "pages/picture/detail",
+			"style": {
+				"navigationBarTitleText": "看图"
+			}
 		}
 	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#FF80AB",
+		"backgroundColor": "#EFEFEF"
+	},
 	"tabBar": {
-		"color": "#7a7e83",
-		"selectedColor": "#0faeff",
+		"color": "#444444",
+		"selectedColor": "#FF80AB",
 		"backgroundColor": "#ffffff",
 		"list": [{
 			"pagePath": "pages/main/index",
 			"text": "首页",
-			"iconPath": "static/img/home.png",
-			"selectedIconPath": "static/img/homeHL.png"
+			"iconPath": "static/img/index-0.png",
+			"selectedIconPath": "static/img/index-1.png"
+		}, {
+			"pagePath": "pages/picture/index",
+			"text": "看图",
+			"iconPath": "static/img/picture.png",
+			"selectedIconPath": "static/img/pictureHL.png"
 		}, {
 			"pagePath": "pages/my/index",
 			"text": "我的",
-			"iconPath": "static/img/user.png",
-			"selectedIconPath": "static/img/userHL.png"
+			"iconPath": "static/img/center-0.png",
+			"selectedIconPath": "static/img/center-1.png"
 		}]
-	},
-	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarBackgroundColor": "#0faeff",
-		"backgroundColor": "#fbf9fe"
 	}
 }

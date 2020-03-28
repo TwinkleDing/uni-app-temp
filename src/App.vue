@@ -49,6 +49,7 @@
 
 	/* #ifdef MP-ALIPAY */
 	page {
+		background-color: #EFEFEF;
 		min-height: 100vh;
 	}
 
