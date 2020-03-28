@@ -2,8 +2,10 @@
 	<view class="m-icon" :class="['m-icon-'+type]" @click="onClick()"></view>
 </template>
 
-<script>
-	export default {
+<script lang='ts'>
+	import Vue from 'vue';
+	export default Vue.extend({
+		name: 'mIcons',
 		props: {
 			/**
 			 * 图标类型
@@ -15,9 +17,6 @@
 				this.$emit('click')
 			}
 		}
-	}
+	});
 </script>
 
-<style>
-	@import "./m-icon.css";
-</style>

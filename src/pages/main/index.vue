@@ -20,16 +20,50 @@
 				</view>
 			</view>
 		</view>
+		<detail  type='star' />
+		<m-input class="m-input" type="text" clearable focus v-model="account" placeholder="请输入账号"></m-input>
+		<hm-balance-card :options="options"></hm-balance-card>
+		<m-icons type='star'></m-icons>
+		<uni-iconss type="contact" size="30"></uni-iconss>
 	</view>
 </template>
 
-<script lang="ts">
-	import { Component, Vue } from 'vue-property-decorator';
+<script lang='ts'>
+	import Vue from 'vue';
 	import {mapGetters, mapMutations} from 'vuex';
+	import Detail from './detail.vue';
+	import HmBalanceCard from '@/components/hm-balance-card/index.vue';
+	import MIcons from '@/components/m-icon/m-icon.vue';
+	import uniIconss from "@/components/uni-icons/uni-icons.vue";
+	import MInput from "@/components/m-input.vue";
 	export default Vue.extend({
+		name: 'Mains',
+		components: {
+			Detail,
+			HmBalanceCard,
+			MIcons,
+			uniIconss,
+			MInput
+		},
 		data() {
 			return {
 				title: 'Hello',
+				account:'',
+				options: {
+          layer:
+            '/static/hm-balance-card/images/img_25821_0_0.png',
+          info: '信用卡余额',
+          zhanghaoguanli:
+            '/static/hm-balance-card/images/img_25821_0_2.png',
+          bd: '¥12929.05',
+          main: '5326 5149 4497 1577',
+          date: '日期',
+          word: '12/24',
+          cvv: 'CVV',
+          num: '235',
+          largeIcon:
+            '/static/hm-balance-card/images/img_25821_0_1.png'
+        }
 			}
 		},
 		onLoad() {

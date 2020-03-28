@@ -40,7 +40,8 @@
             "ios" : {},
             /* ios打包配置 */
             "sdkConfigs" : {
-                "oauth" : {}
+                "oauth" : {},
+                "ad" : {}
             }
         },
         /* SDK配置 */

@@ -20,12 +20,8 @@
 <script>
 	import Vue from 'vue';
 	import { mapGetters, mapMutations, mapActions } from 'vuex';
-	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	export default Vue.extend( {
 		name: 'pictureDetail',
-		components: {
-			uniNavBar
-		},
 		data() {
 			return {
 				imgShow: false,

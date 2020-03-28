@@ -1,0 +1,193 @@
+.hm-balance-card {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 750rpx;
+  height: 526.5rpx;
+}
+
+.box {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 719.91rpx;
+  height: 483.52rpx;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  align-self: center;
+  width: 719.91rpx;
+  height: 483.52rpx;
+  overflow: hidden;
+}
+
+.hd {
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32.23rpx;
+  margin-left: 53.72rpx;
+  width: 633.95rpx;
+  height: 51.58rpx;
+}
+
+.info {
+  max-width: 569.48rpx;
+  height: 25.79rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25.79rpx;
+  white-space: nowrap;
+  color: rgba(19, 19, 21, 0.5);
+  font-size: 21.49rpx;
+  font-weight: 400;
+}
+
+.wrap {
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgba(28, 143, 248, 0);
+  width: 51.58rpx;
+  height: 51.58rpx;
+}
+
+.empty {
+  position: absolute;
+  top: 20.42rpx;
+  left: 19.34rpx;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 9.67rpx;
+  border-color: rgba(255, 255, 255, 1);
+  width: 12.89rpx;
+  height: 12.89rpx;
+}
+
+.zhanghaoguanli {
+  position: relative;
+  width: 37.61rpx;
+  height: 37.61rpx;
+}
+
+.bd {
+  position: relative;
+  opacity: 1;
+  margin-top: 4.3rpx;
+  margin-left: 53.72rpx;
+  max-width: 653.3rpx;
+  height: 75.21rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 75.21rpx;
+  white-space: nowrap;
+  color: #ffffff;
+  font-family: MicrosoftYaHei, Microsoft YaHei;
+  font-size: 69.84rpx;
+  font-weight: normal;
+}
+
+.main {
+  position: relative;
+  opacity: 1;
+  margin-top: 133.24rpx;
+  margin-left: 53.72rpx;
+  max-width: 653.3rpx;
+  height: 36.53rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 36.53rpx;
+  white-space: pre;
+  color: #ffffff;
+  font-family: MicrosoftYaHei, Microsoft YaHei;
+  font-size: 32.23rpx;
+  font-weight: normal;
+}
+
+.ft {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-top: 35.46rpx;
+  margin-left: 53.72rpx;
+  height: 66.62rpx;
+}
+
+.block {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-right: 83.81rpx;
+  height: 66.62rpx;
+}
+
+.date {
+  position: relative;
+  max-width: 68.77rpx;
+  height: 25.79rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25.79rpx;
+  white-space: nowrap;
+  color: rgba(19, 19, 21, 0.6);
+  font-family: MicrosoftYaHei, Microsoft YaHei;
+  font-size: 21.49rpx;
+  font-weight: normal;
+}
+
+.word {
+  position: relative;
+  opacity: 1;
+  margin-top: 4.3rpx;
+  line-height: 36.53rpx;
+  white-space: nowrap;
+  color: #ffffff;
+  font-family: MicrosoftYaHei, Microsoft YaHei;
+  font-size: 32.23rpx;
+  font-weight: normal;
+}
+
+.group {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-right: 340.62rpx;
+  height: 66.62rpx;
+}
+
+.cvv {
+  position: relative;
+  line-height: 25.79rpx;
+  white-space: nowrap;
+  color: rgba(19, 19, 21, 0.6);
+  font-family: MicrosoftYaHei, Microsoft YaHei;
+  font-size: 21.49rpx;
+  font-weight: normal;
+}
+
+.num {
+  position: relative;
+  opacity: 1;
+  margin-top: 4.3rpx;
+  line-height: 36.53rpx;
+  white-space: nowrap;
+  color: #ffffff;
+  font-family: MicrosoftYaHei, Microsoft YaHei;
+  font-size: 32.23rpx;
+  font-weight: normal;
+}
+
+.largeIcon {
+  margin-top: 18.27rpx;
+  width: 73.07rpx;
+  height: 42.98rpx;
+}
