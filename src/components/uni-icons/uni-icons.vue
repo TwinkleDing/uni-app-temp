@@ -13,7 +13,7 @@
 	});
 	// #endif
 	export default Vue.extend ({
-		name: 'UniIcons',
+		name: 'UniIcon',
 		props: {
 			type: {
 				type: String,

@@ -5,7 +5,7 @@
 <script lang='ts'>
 	import Vue from 'vue';
 	export default Vue.extend({
-		name: 'mIcons',
+		name: 'mIcon',
 		props: {
 			/**
 			 * 图标类型

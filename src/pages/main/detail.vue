@@ -1,18 +1,17 @@
 <template>
   <view>
-		<m-icons type='star'></m-icons>
-    12
+		<icons type="contact" size="30" />
   </view>
 </template>
 
 <script lang='ts'>
 	import Vue from 'vue';
-	import MIcons from '@/components/m-icon/m-icon.vue';
+	import Icons from "@/components/uni-icons/uni-icons.vue";
 
 	export default Vue.extend({
     name: 'detail',
     components:{
-      MIcons
+      Icons
     }
   })
 
