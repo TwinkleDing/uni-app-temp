@@ -1,28 +1,30 @@
 <template>
-	<view class="content">
-		<view v-if="hasLogin" class="hello">
-			<view class="title">
-				您好 {{userName}}，您已成功登录。
+	<view>
+		<view class="content">
+			<view v-if="hasLogin" class="hello">
+				<view class="title">
+					您好 {{userName}}，您已成功登录。
+				</view>
+				<view class="ul">
+					<view>这是 uni-app 带登录模板的示例App首页。</view>
+					<view>在 “我的” 中点击 “退出” 可以 “注销当前账户”</view>
+				</view>
 			</view>
-			<view class="ul">
-				<view>这是 uni-app 带登录模板的示例App首页。</view>
-				<view>在 “我的” 中点击 “退出” 可以 “注销当前账户”</view>
-			</view>
-		</view>
-		<view v-if="!hasLogin" class="hello">
-			<view class="title">
-				您好 游客。
-			</view>
-			<view class="ul">
-				<view>这是 uni-app 带登录模板的示例App首页。</view>
-				<view>在 “我的” 中点击 “登录” 可以 “登录您的账户”</view>
+			<view v-if="!hasLogin" class="hello">
+				<view class="title">
+					您好 游客。
+				</view>
+				<view class="ul">
+					<view>这是 uni-app 带登录模板的示例App首页。</view>
+					<view>在 “我的” 中点击 “登录” 可以 “登录您的账户”</view>
+				</view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script lang="ts">
-	import Vue from 'vue';	
+	import { Component, Vue } from 'vue-property-decorator';
 	import {mapGetters, mapMutations} from 'vuex';
 	export default Vue.extend({
 		data() {

@@ -13,9 +13,10 @@
 </template>
 
 <script>
+	import Vue from 'vue';
 	import mIcon from './m-icon/m-icon.vue'
 
-	export default {
+	export default ({
 		components: {
 			mIcon
 		},
@@ -95,7 +96,7 @@
 				this.$emit('input', e.detail.value)
 			}
 		}
-	}
+	})
 </script>
 
 <style>

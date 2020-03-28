@@ -1,9 +1,9 @@
 <template>
 	<view class="center">
 		<view class="logo" @click="bindLogin" :hover-class="!login ? 'logo-hover' : ''">
-			<image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image>
+			<image class="logo-img" :src="avatarUrl"></image>
 			<view class="logo-title">
-				<text class="uer-name">Hi，{{login ? uerInfo.name : '您未登录'}}</text>
+				<text class="uer-name">Hi，{{hasLogin ? userName : '您未登录'}}</text>
 				<text class="go-login navigat-arrow" v-if="!login">&#xe65e;</text>
 			</view>
 		</view>
@@ -60,7 +60,7 @@
 				uerInfo: {}
 			}
 		},
-		computed: mapGetters(['hasLogin', 'forcedLogin']),
+		computed: mapGetters(['hasLogin', 'forcedLogin', 'userName']),
 		methods: {
 			...mapMutations(['LOGOUT']),
 			bindLogin() {

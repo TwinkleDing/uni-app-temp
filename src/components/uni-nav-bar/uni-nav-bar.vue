@@ -41,10 +41,11 @@
 </template>
 
 <script>
+	import Vue from 'vue';
 	import uniStatusBar from "../uni-status-bar/uni-status-bar.vue";
 	import uniIcons from "../uni-icons/uni-icons.vue";
 
-	export default {
+	export default ({
 		name: "UniNavBar",
 		components: {
 			uniStatusBar,
@@ -109,7 +110,7 @@
 				this.$emit("clickRight");
 			}
 		}
-	};
+	})
 </script>
 
 <style lang="scss" scoped>
