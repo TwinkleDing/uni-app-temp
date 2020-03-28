@@ -11,14 +11,16 @@
 			<!-- #ifdef APP-PLUS -->
 			<view v-if="showBtn" class="setting" @click="setting">设为壁纸</view>
 			<!-- #endif -->
-			<view class="collect" @click="collect"></view>
+			<view class="collect" @click="collect">123</view>
 		</view>
 		<!-- #endif -->
 	</view>
 </template>
 
 <script>
-	export default {
+	import Vue from 'vue';
+	import { mapGetters, mapMutations, mapActions } from 'vuex';
+	export default Vue.extend( {
 		data() {
 			return {
 				imgShow: false,
@@ -43,6 +45,7 @@
 			this.imgLength = data.img_num;
 			this.data.push(data.img_src);
 			this.getData(data.id);
+			this.$store.commit('CHECK_COLLECTION', this.data[this.index])
 			uni.setNavigationBarTitle({
 				title: "1/" + this.imgLength
 			});
@@ -131,7 +134,12 @@
 				// #endif
 			}
 		},
+		computed: {
+			...mapGetters(['hasCollection'])
+		},
 		methods: {
+			...mapMutations(['ADD_COLLECTION', 'CHECK_COLLECTION']),
+			...mapActions(['removeCollection']),
 			download() {
 				uni.downloadFile({
 					url: this.data[this.index],
@@ -161,10 +169,12 @@
 				})
 			},
 			collect() {
-				uni.showToast({
-					icon: 'none',
-					title: '点击收藏按钮'
-				})
+				if(this.hasCollection) {
+					this.removeCollection(this.data[this.index])
+				}else {
+					this.ADD_COLLECTION(this.data[this.index])
+				}
+				this.CHECK_COLLECTION(this.data[this.index])
 			},
 			//#ifdef APP-PLUS
 			setting() {
@@ -208,6 +218,7 @@
 			//#endif
 			swpierChange(e) {
 				this.index = e.detail.current;
+				this.$store.commit('CHECK_COLLECTION', this.data[this.index])
 				uni.setNavigationBarTitle({
 					title: e.detail.current + 1 + '/' + this.imgLength
 				})
@@ -250,7 +261,7 @@
 				})
 			}
 		}
-	}
+	})
 </script>
 
 <style>

@@ -134,4 +134,9 @@
 	button.primary {
 		background-color: #0faeff;
 	}
+	
+	template {
+		display: flex;
+		flex: 1;
+	}
 </style>
