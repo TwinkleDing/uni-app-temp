@@ -1,6 +1,5 @@
 <template>
   <view>
-		<icons type="contact" size="30" />
   </view>
 </template>
 

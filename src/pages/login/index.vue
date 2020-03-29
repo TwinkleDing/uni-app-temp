@@ -11,7 +11,7 @@
 			</view>
 		</view>
 		<view class="btn-row">
-			<button type="primary" class="primary" @tap="bindLogin">登录</button>
+			<button type="primary" class="primary" @tap="toLogin">登录</button>
 		</view>
 		<view class="action-row">
 			<navigator url="./reg">注册账号</navigator>
@@ -27,165 +27,181 @@
 				<!-- #endif -->
 			</view>
 		</view>
+		<slider-verify :isShow="sliderVerifyFLag" 
+			@touchSliderResult="verifyResult" 
+			ref="verifyElement"></slider-verify>
 	</view>
 </template>
 <script>
-import Vue from 'vue';
-import {mapGetters, mapMutations} from 'vuex';
-import mInput from '@/components/m-input.vue';
-import service from '@/service.ts';
-import {showToast1} from '@/util/index';
-export default Vue.extend({
-  components: {
-    mInput
-  },
-  data() {
-    return {
-      providerList: [
-        {
-          image:'../../static/img/weixin.png'
-        },{
-          image:'../../static/img/qq.png'
-        },{
-          image:'../../static/img/sinaweibo.png'
+  import {mapGetters, mapMutations} from 'vuex';
+  import mInput from '@/components/m-input.vue';
+  import service from '@/service.ts';
+  import {showToast1, showToast2} from '@/util/index';
+  import sliderVerify from '@/components/slider-verify/slider-verify.vue';
+  export default {
+    components: {
+      mInput,
+      sliderVerify
+    },
+    data() {
+      return {
+        providerList: [
+          {
+            image:'../../static/img/weixin.png'
+          },{
+            image:'../../static/img/qq.png'
+          },{
+            image:'../../static/img/sinaweibo.png'
+          }
+        ],
+        hasProvider: false,
+        account: 'admin',
+        password: 'admin',
+        positionTop: 0,
+        isDevtools: false,
+        sliderVerifyFLag: false
+      }
+    },
+    computed: mapGetters(['forcedLogin']),
+    methods: {
+      ...mapMutations(['LOGIN']),
+      initProvider() {
+        const filters = ['weixin', 'qq', 'sinaweibo'];
+        uni.getProvider({
+          service: 'oauth',
+          success: (res) => {
+            if (res.provider && res.provider.length) {
+              for (let i = 0; i < res.provider.length; i++) {
+                if (~filters.indexOf(res.provider[i])) {
+                  this.providerList.push({
+                    value: res.provider[i],
+                    image: '../../static/img/' + res.provider[i] + '.png'
+                  });
+                }
+              }
+              this.hasProvider = true;
+            }
+          },
+          fail: (err) => {
+            console.error('获取服务供应商失败：' + JSON.stringify(err));
+          }
+        });
+      },
+      initPosition() {
+        /**
+         * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。
+         * 反向使用 top 进行定位，可以避免此问题。
+         */
+        this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
+      },
+      bindLogin() {
+        /**
+         * 客户端对账号信息进行一些必要的校验。
+         * 实际开发中，根据业务需要进行处理，这里仅做示例。
+         */
+        if (this.account.length < 5) {
+          showToast1({title:'账号最短为 5 个字符'});
+          return;
+        };
+        if (this.password.length < 5) {
+          uni.showToast({
+            icon: 'none',
+            title: '密码最短为 5 个字符'
+          });
+          return;
+        };
+        /**
+         * 下面简单模拟下服务端的处理
+         * 检测用户账号密码是否在已注册的用户列表中
+         * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
+         */
+        const data = {
+          account: this.account,
+          password: this.password
+        };
+        const validUser = service.getUsers().some(function(user) {
+          return data.account === user.account && data.password === user.password;
+        });
+        if (validUser) {
+          this.toMain(this.account);
+        } else {
+          uni.showToast({
+            icon: 'none',
+            title: '用户账号或密码不正确',
+          });
         }
-      ],
-      hasProvider: false,
-      account: 'admin',
-      password: 'admin',
-      positionTop: 0,
-      isDevtools: false,
-    }
-  },
-  computed: mapGetters(['forcedLogin']),
-  methods: {
-    ...mapMutations(['LOGIN']),
-    initProvider() {
-      const filters = ['weixin', 'qq', 'sinaweibo'];
-      uni.getProvider({
-        service: 'oauth',
-        success: (res) => {
-          if (res.provider && res.provider.length) {
-            for (let i = 0; i < res.provider.length; i++) {
-              if (~filters.indexOf(res.provider[i])) {
-                this.providerList.push({
-                  value: res.provider[i],
-                  image: '../../static/img/' + res.provider[i] + '.png'
+      },
+      oauth(value) {
+        console.log(value)
+        uni.login({
+          provider: value,
+          success: (res) => {
+            uni.getUserInfo({
+              provider: value,
+              success: (infoRes) => {
+                /**
+                 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
+                 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
+                 */
+                // this.toMain(infoRes.userInfo.nickName);
+              },
+              fail() {
+                uni.showToast({
+                  icon: 'none',
+                  title: '登陆失败'
                 });
               }
-            }
-            this.hasProvider = true;
+            });
+          },
+          fail: (err) => {
+            console.error('授权登录失败：' + JSON.stringify(err));
           }
-        },
-        fail: (err) => {
-          console.error('获取服务供应商失败：' + JSON.stringify(err));
-        }
-      });
-    },
-    initPosition() {
-      /**
-       * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。
-       * 反向使用 top 进行定位，可以避免此问题。
-       */
-      this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
-    },
-    bindLogin() {
-      /**
-       * 客户端对账号信息进行一些必要的校验。
-       * 实际开发中，根据业务需要进行处理，这里仅做示例。
-       */
-      if (this.account.length < 5) {
-        showToast1({title:'账号最短为 5 个字符'});
-        return;
-      };
-      if (this.password.length < 5) {
-        uni.showToast({
-          icon: 'none',
-          title: '密码最短为 5 个字符'
         });
-        return;
-      };
-      /**
-       * 下面简单模拟下服务端的处理
-       * 检测用户账号密码是否在已注册的用户列表中
-       * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
-       */
-      const data = {
-        account: this.account,
-        password: this.password
-      };
-      const validUser = service.getUsers().some(function(user) {
-        return data.account === user.account && data.password === user.password;
-      });
-      if (validUser) {
-        this.toMain(this.account);
-      } else {
-        uni.showToast({
-          icon: 'none',
-          title: '用户账号或密码不正确',
-        });
-      }
-    },
-    oauth(value) {
-      console.log(value)
-      uni.login({
-        provider: value,
-        success: (res) => {
-          uni.getUserInfo({
-            provider: value,
-            success: (infoRes) => {
-              /**
-               * 实际开发中，获取用户信息后，需要将信息上报至服务端。
-               * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
-               */
-              // this.toMain(infoRes.userInfo.nickName);
-            },
-            fail() {
-              uni.showToast({
-                icon: 'none',
-                title: '登陆失败'
-              });
-            }
+      },
+      getUserInfo({ detail }) {
+        if (detail.userInfo) {
+          this.toMain(detail.userInfo.nickName);
+        } else {
+          uni.showToast({
+            icon: 'none',
+            title: '登陆失败'
           });
-        },
-        fail: (err) => {
-          console.error('授权登录失败：' + JSON.stringify(err));
         }
-      });
-    },
-    getUserInfo({ detail }) {
-      if (detail.userInfo) {
-        this.toMain(detail.userInfo.nickName);
-      } else {
-        uni.showToast({
-          icon: 'none',
-          title: '登陆失败'
-        });
+      },
+      toMain(userName) {
+        this.LOGIN(userName);
+        /**
+         * 强制登录时使用reLaunch方式跳转过来
+         * 返回首页也使用reLaunch方式
+         */
+        if (this.forcedLogin) {
+          uni.reLaunch({
+            url: '../main/index',
+          });
+        } else {
+          uni.navigateBack();
+        }
+      },
+      toLogin() {
+        this.sliderVerifyFLag = true;
+      },
+      verifyResult(res) {
+        this.sliderVerifyFLag = false;
+        if(res) {
+          this.bindLogin();
+        }else{
+          showToast2('验证失败，请重新验证')
+        }
       }
     },
-    toMain(userName) {
-      this.LOGIN(userName);
-      /**
-       * 强制登录时使用reLaunch方式跳转过来
-       * 返回首页也使用reLaunch方式
-       */
-      if (this.forcedLogin) {
-        uni.reLaunch({
-          url: '../main/index',
-        });
-      } else {
-        uni.navigateBack();
-      }
+    onReady() {
+      this.initPosition();
+      this.initProvider();
+      // #ifdef MP-WEIXIN
+      this.isDevtools = uni.getSystemInfoSync().platform === 'devtools';
+      // #endif
     }
-  },
-  onReady() {
-    this.initPosition();
-    this.initProvider();
-    // #ifdef MP-WEIXIN
-    this.isDevtools = uni.getSystemInfoSync().platform === 'devtools';
-    // #endif
   }
-})
 </script>
 
 <style>

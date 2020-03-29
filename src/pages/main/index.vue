@@ -12,7 +12,6 @@
 				</view>
 			</view>
 		</view>
-		<detail />
 	</view>
 </template>
 
@@ -23,7 +22,7 @@
 	export default Vue.extend({
 		name: 'Mains',
 		components: {
-			Detail
+			Detail,
 		},
 		data() {
 			return {
