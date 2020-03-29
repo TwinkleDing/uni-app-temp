@@ -32,9 +32,9 @@
 			</view>
 		</view>
 		<view class="center-list">
-			<view class="center-list-item border-bottom" @click="goAbout">
+			<view class="center-list-item border-bottom" @click="goCard">
 				<text class="list-icon">&#xe603;</text>
-				<text class="list-text">关于</text>
+				<text class="list-text">我的卡券</text>
 				<text class="navigat-arrow">&#xe65e;</text>
 			</view>
 			<view class="center-list-item">
@@ -79,7 +79,10 @@
 					});
 				}
 			},
-			goAbout() {
+			goCard() {
+				uni.navigateTo({
+					url: './card',
+				});
 			}
 		}
 	})

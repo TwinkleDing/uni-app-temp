@@ -58,6 +58,18 @@
 					}
 				}
 			}
+		},
+		{
+			"path": "pages/my/card",
+			"style": {
+				"navigationBarTitleText": "卡包"
+			}
+		},
+		{
+			"path": "pages/my/collection",
+			"style": {
+				"navigationBarTitleText": "收藏"
+			}
 		}
 	],
 	"globalStyle": {

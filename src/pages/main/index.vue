@@ -21,7 +21,6 @@
 			</view>
 		</view>
 		<detail  type='star' />
-		<hm-balance-card :options="options"></hm-balance-card>
 		<uni-icon type="contact" size="30" />
 	</view>
 </template>
@@ -29,33 +28,16 @@
 <script lang='ts'>
 	import Vue from 'vue';
 	import {mapGetters, mapMutations} from 'vuex';
-	import HmBalanceCard from '@/components/hm-balance-card/index.vue';
 	import uniIcon from "@/components/uni-icons/uni-icons.vue";
 	import Detail from './detail.vue';
 	export default Vue.extend({
 		name: 'Mains',
 		components: {
 			Detail,
-			HmBalanceCard,
 			uniIcon
 		},
 		data() {
 			return {
-				options: {
-          layer:
-            '/static/hm-balance-card/images/img_25821_0_0.png',
-          info: '信用卡余额',
-          zhanghaoguanli:
-            '/static/hm-balance-card/images/img_25821_0_2.png',
-          bd: '¥12929.05',
-          main: '5326 5149 4497 1577',
-          date: '日期',
-          word: '12/24',
-          cvv: 'CVV',
-          num: '235',
-          largeIcon:
-            '/static/hm-balance-card/images/img_25821_0_1.png'
-        }
 			}
 		},
 		onLoad() {
