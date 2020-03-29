@@ -46,7 +46,6 @@
 			}
 			// #endif
 			this.screenHeight = uni.getSystemInfoSync().windowHeight-44;
-			console.log(this.screenHeight)
 			this.detailDec = e.data;
 			let data = JSON.parse(decodeURIComponent(e.data));
 			this.imgLength = data.img_num;
@@ -176,7 +175,6 @@
 				})
 			},
 			collect() {
-				console.log(1)
 				if(this.hasCollection) {
 					this.removeCollection(this.data[this.index])
 				}else {

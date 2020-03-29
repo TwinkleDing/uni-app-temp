@@ -33,7 +33,8 @@
 		{
 			"path": "pages/picture/index",
 			"style": {
-				"navigationBarTitleText": "看图"
+				"navigationBarTitleText": "看图",
+				"enablePullDownRefresh":true
 			}
 		},
 		{
@@ -47,7 +48,8 @@
 		{
 			"path": "pages/my/card",
 			"style": {
-				"navigationBarTitleText": "卡包"
+				"navigationBarTitleText": "卡包",
+				"enablePullDownRefresh":true
 			}
 		},
 		{
