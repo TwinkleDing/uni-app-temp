@@ -13,11 +13,16 @@
 				<text class="list-text">收藏图片</text>
 				<text class="navigat-arrow">&#xe65e;</text>
 			</view>
-		</view>
-		<view class="center-list">
 			<view class="center-list-item border-bottom" @click="goCard">
 				<text class="list-icon">&#xe603;</text>
 				<text class="list-text">我的卡券</text>
+				<text class="navigat-arrow">&#xe65e;</text>
+			</view>
+		</view>
+		<view class="center-list">
+			<view class="center-list-item border-bottom" @click="goCalendar">
+				<text class="list-icon">&#xe603;</text>
+				<text class="list-text">日历信息</text>
 				<text class="navigat-arrow">&#xe65e;</text>
 			</view>
 			<view class="center-list-item">
@@ -65,6 +70,11 @@
 			goCard() {
 				uni.navigateTo({
 					url: './card',
+				});
+			},
+			goCalendar() {
+				uni.navigateTo({
+					url: './calendar',
 				});
 			},
 			goCollection() {

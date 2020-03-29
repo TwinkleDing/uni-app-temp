@@ -11,6 +11,7 @@
 					您好 游客。
 				</view>
 			</view>
+			<detail />
 		</view>
 	</view>
 </template>

@@ -57,6 +57,12 @@
 			"style": {
 				"navigationBarTitleText": "收藏"
 			}
+		},
+		{
+			"path": "pages/my/calendar",
+			"style": {
+				"navigationBarTitleText": "日历"
+			}
 		}
 	],
 	"globalStyle": {

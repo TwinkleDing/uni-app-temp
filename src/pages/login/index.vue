@@ -188,9 +188,10 @@
       verifyResult(res) {
         this.sliderVerifyFLag = false;
         if(res) {
+          showToast2('验证成功');
           this.bindLogin();
         }else{
-          showToast2('验证失败，请重新验证')
+          showToast2('验证失败，请重新验证');
         }
       }
     },

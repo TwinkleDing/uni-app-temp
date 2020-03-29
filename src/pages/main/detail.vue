@@ -3,16 +3,17 @@
   </view>
 </template>
 
-<script lang='ts'>
-	import Vue from 'vue';
+<script>
 	import Icons from "@/components/uni-icons/uni-icons.vue";
-
-	export default Vue.extend({
+  import uniCalendar from '@/components/uni-calendar/uni-calendar.vue'
+	export default{
     name: 'detail',
     components:{
       Icons
+    },
+    methods: {
     }
-  })
+  }
 
 </script>
 
