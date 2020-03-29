@@ -1,27 +1,32 @@
 <template>
 	<view class="index">
+		<uni-nav-bar 
+				background-color='#000'
+				color='#fff'
+				:shadow='false'
+				:border='false'
+				left-icon="back" 
+				@clickLeft='goBack'
+				@clickRight='collect'
+				:right-icon="hasCollection? 'star-filled':'star'" 
+				:title='index+1+"/"+imgLength'
+		></uni-nav-bar>
 		<swiper @change="swpierChange" :style="{height:screenHeight + 'px'}">
 			<swiper-item v-for="(value,index) in data" :key="value" @click="preImg(index)">
 				<image :src="value" mode="widthFix"></image>
 			</swiper-item>
 		</swiper>
-		<!-- #ifndef H5 -->
-		<view class="detail-btn-view">
-			<view class="download" @click="download"></view>
-			<!-- #ifdef APP-PLUS -->
-			<view v-if="showBtn" class="setting" @click="setting">设为壁纸</view>
-			<!-- #endif -->
-			<view class="collect" @click="collect">123</view>
-		</view>
-		<!-- #endif -->
 	</view>
 </template>
 
 <script>
-	import Vue from 'vue';
 	import { mapGetters, mapMutations, mapActions } from 'vuex';
-	export default Vue.extend( {
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
+	export default{
 		name: 'pictureDetail',
+		components: {
+			uniNavBar,
+		},
 		data() {
 			return {
 				imgShow: false,
@@ -31,7 +36,7 @@
 				imgLength: 0,
 				providerList: [],
 				data: [],
-				detailDec: ""
+				detailDec: "",
 			}
 		},
 		onLoad(e) {
@@ -40,16 +45,14 @@
 				this.showBtn = true;
 			}
 			// #endif
-			this.screenHeight = uni.getSystemInfoSync().windowHeight;
+			this.screenHeight = uni.getSystemInfoSync().windowHeight-44;
+			console.log(this.screenHeight)
 			this.detailDec = e.data;
 			let data = JSON.parse(decodeURIComponent(e.data));
 			this.imgLength = data.img_num;
 			this.data.push(data.img_src);
 			this.getData(data.id);
 			this.$store.commit('CHECK_COLLECTION', this.data[this.index])
-			uni.setNavigationBarTitle({
-				title: "1/" + this.imgLength
-			});
 			// 获取分享通道
 			uni.getProvider({
 				service: "share",
@@ -141,6 +144,9 @@
 		methods: {
 			...mapMutations(['ADD_COLLECTION', 'CHECK_COLLECTION']),
 			...mapActions(['removeCollection']),
+			goBack() {
+				uni.navigateBack()
+			},
 			download() {
 				uni.downloadFile({
 					url: this.data[this.index],
@@ -170,6 +176,7 @@
 				})
 			},
 			collect() {
+				console.log(1)
 				if(this.hasCollection) {
 					this.removeCollection(this.data[this.index])
 				}else {
@@ -220,9 +227,6 @@
 			swpierChange(e) {
 				this.index = e.detail.current;
 				this.$store.commit('CHECK_COLLECTION', this.data[this.index])
-				uni.setNavigationBarTitle({
-					title: e.detail.current + 1 + '/' + this.imgLength
-				})
 			},
 			preImg(index) {
 				if (this.imgShow) { //防止点击过快导致重复调用 
@@ -262,7 +266,7 @@
 				})
 			}
 		}
-	})
+	}
 </script>
 
 <style>

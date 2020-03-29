@@ -1,6 +1,10 @@
 <template>
   <view>
 		<hm-balance-card :options="options"></hm-balance-card>
+		<hm-balance-card :options="options"></hm-balance-card>
+		<hm-balance-card :options="options"></hm-balance-card>
+		<hm-balance-card :options="options"></hm-balance-card>
+		<hm-balance-card :options="options"></hm-balance-card>
   </view>
 </template>
 

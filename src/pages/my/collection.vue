@@ -1,18 +1,21 @@
 <template>
-	<view class="index">
-		<swiper @change="swpierChange" :style="{height:screenHeight + 'px'}">
-			<swiper-item v-for="(value,index) in data" :key="index" @click="preImg(index)">
-				<image :src="value" mode="widthFix"></image>
-			</swiper-item>
-		</swiper>
-		<!-- #ifndef H5 -->
-		<view class="detail-btn-view">
-			<view class="download" @click="download"></view>
-			<!-- #ifdef APP-PLUS -->
-			<view v-if="showBtn" class="setting" @click="setting">设为壁纸</view>
+	<view>
+		<view v-if="collections.length" class="index">
+			<swiper @change="swpierChange" :style="{height:screenHeight + 'px'}">
+				<swiper-item v-for="(value,index) in data" :key="index" @click="preImg(index)">
+					<image :src="value" mode="widthFix"></image>
+				</swiper-item>
+			</swiper>
+			<!-- #ifndef H5 -->
+			<view class="detail-btn-view">
+				<view class="download" @click="download"></view>
+				<!-- #ifdef APP-PLUS -->
+				<view v-if="showBtn" class="setting" @click="setting">设为壁纸</view>
+				<!-- #endif -->
+			</view>
 			<!-- #endif -->
 		</view>
-		<!-- #endif -->
+		<view v-else>暂无收藏</view>
 	</view>
 </template>
 
@@ -20,7 +23,7 @@
 	import Vue from 'vue';
 	import { mapGetters } from 'vuex';
 	export default Vue.extend( {
-		name: 'collection',
+		name: 'collections',
 		data() {
 			return {
 				imgShow: false,
@@ -40,6 +43,7 @@
       uni.setNavigationBarTitle({
 				title: "1/" + this.imgLength
 			});
+			console.log(uni)
 		},
 		computed: {
 			...mapGetters(['hasCollection', 'collections'])
@@ -141,7 +145,6 @@
 
 <style>
 	page {
-		background-color: #000;
 		height: 100%;
 	}
 

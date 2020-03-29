@@ -20,21 +20,18 @@
 				</view>
 			</view>
 		</view>
-		<detail  type='star' />
-		<uni-icon type="contact" size="30" />
+		<detail />
 	</view>
 </template>
 
 <script lang='ts'>
 	import Vue from 'vue';
 	import {mapGetters, mapMutations} from 'vuex';
-	import uniIcon from "@/components/uni-icons/uni-icons.vue";
 	import Detail from './detail.vue';
 	export default Vue.extend({
 		name: 'Mains',
 		components: {
-			Detail,
-			uniIcon
+			Detail
 		},
 		data() {
 			return {
@@ -45,9 +42,6 @@
 		},
 		computed: {
 			...mapGetters(['forcedLogin', 'hasLogin', 'userName'])
-		},
-		mounted() {
-			console.log(this.userName)
 		},
 		methods: {
 			loginOr() {

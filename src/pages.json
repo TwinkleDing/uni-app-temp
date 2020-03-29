@@ -39,23 +39,8 @@
 		{
 			"path": "pages/picture/detail",
 			"style": {
-				"navigationBarTitleText": "详情",
-				"navigationBarBackgroundColor": "#000000",
-				"backgroundColor": "#000000",
 				"app-plus": {
-					"bounce": "none",
-					"titleNView": {
-						"buttons": [{
-							"type": "share"
-						}]
-					}
-				},
-				"h5": {
-					"titleNView": {
-						"buttons": [{
-							"type": "favorite"
-						}]
-					}
+					"titleNView": false
 				}
 			}
 		},
