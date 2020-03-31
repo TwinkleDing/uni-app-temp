@@ -186,10 +186,19 @@
         this.sliderVerifyFLag = true;
       },
       verifyResult(res) {
-        this.sliderVerifyFLag = false;
+        let that = this
         if(res) {
-          showToast2('验证成功');
-          this.bindLogin();
+        uni.showToast({
+          icon: 'none',
+          title: '验证成功',
+          duration: 1000,
+          success() {
+            that.sliderVerifyFLag = false;
+            setTimeout(()=>{
+              that.bindLogin();
+            }, 1000);
+          }
+        });
         }else{
           showToast2('验证失败，请重新验证');
         }
