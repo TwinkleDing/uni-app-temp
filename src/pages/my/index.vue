@@ -20,6 +20,13 @@
 			</view>
 		</view>
 		<view class="center-list">
+			<view class="center-list-item border-bottom" @click="goAddressBook">
+				<text class="list-icon">&#xe603;</text>
+				<text class="list-text">通讯录</text>
+				<text class="navigat-arrow">&#xe65e;</text>
+			</view>
+		</view>
+		<view class="center-list">
 			<view class="center-list-item border-bottom" @click="goCalendar">
 				<text class="list-icon">&#xe603;</text>
 				<text class="list-text">日历信息</text>
@@ -80,6 +87,11 @@
 			goCollection() {
 				uni.navigateTo({
 					url: './collection',
+				});
+			},
+			goAddressBook() {
+				uni.navigateTo({
+					url: './addressBook',
 				});
 			}
 		}
