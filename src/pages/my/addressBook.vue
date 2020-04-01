@@ -72,12 +72,9 @@
     watch: {
       search(data) {
 				setTimeout(() => {
-					this.listCur = data
+					this.listCur = data.toUpperCase()
 					this.listCurID= this.listCur
 				}, 200);
-			},
-			listCurID(data) {
-				console.log(data)
 			}
     },
 		methods: {
