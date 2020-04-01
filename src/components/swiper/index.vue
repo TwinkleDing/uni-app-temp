@@ -48,10 +48,8 @@ export default {
 
 <style lang="scss" scoped>
 .uni-padding-wrap{
-  height:200px;
   width: 100%;
   .swiper{
-    height:200px;
     width: 100%;
     .swiper-item{
       img{

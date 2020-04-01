@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- <web-view :webview-styles="webviewStyles" 
+      src="http://localhost:8082"></web-view> -->
   </view>
 </template>
 
@@ -10,6 +12,15 @@
     name: 'detail',
     components:{
       Icons
+    },
+    data() {
+      return {
+        webviewStyles: {
+            progress: {
+                color: '#FF3333'
+            }
+        }
+      }
     },
     methods: {
     }
