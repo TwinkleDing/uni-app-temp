@@ -467,12 +467,12 @@
     margin: initial;
     transition-duration: 0.3s;
   }
-  .justify-start {
-    justify-content: flex-start;
-  }
-  .justify-end {
-    justify-content: flex-end;
-  }
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
 }
 .du-modal.drawer-modal.justify-start .du-dialog {
 	transform: translateX(-100%);
