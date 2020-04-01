@@ -247,10 +247,14 @@
 			},
 			tEnd(e) {
 				this.endX = e.changedTouches[0].pageX
-				if(this.endX - this.startX > 100) { // 向后一个月
+				if(this.endX - this.startX > 100) { // 向前一个月
+					setTimeout(()=>{
+						this.pre()
+					},100)
+				}else if(this.endX - this.startX < -100) { // 向后一个月
+				setTimeout(()=>{
 					this.next()
-				}else if(this.endX - this.startX < -100) { // 向前一个月
-					this.pre()
+				},100)
 				}
 			}
 		}
