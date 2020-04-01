@@ -1,6 +1,7 @@
 <template>
-	<view>
+	<view class="main">
 		<view class="content">
+			<swipers />
 			<view v-if="hasLogin" class="hello">
 				<view class="title">
 					您好 {{userName}}，您已成功登录。
@@ -20,10 +21,12 @@
 	import Vue from 'vue';
 	import {mapGetters, mapMutations} from 'vuex';
 	import Detail from './detail.vue';
+	import Swipers from '@/components/swiper/index.vue';
 	export default Vue.extend({
 		name: 'Mains',
 		components: {
 			Detail,
+			Swipers
 		},
 		data() {
 			return {
@@ -56,7 +59,7 @@
 	});
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.hello {
 		display: flex;
 		flex: 1;
