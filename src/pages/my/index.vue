@@ -25,6 +25,11 @@
 				<text class="list-text">通讯录</text>
 				<text class="navigat-arrow">&#xe65e;</text>
 			</view>
+			<view class="center-list-item border-bottom" @click="goModalBook">
+				<text class="list-icon">&#xe603;</text>
+				<text class="list-text">模态窗</text>
+				<text class="navigat-arrow">&#xe65e;</text>
+			</view>
 		</view>
 		<view class="center-list">
 			<view class="center-list-item border-bottom" @click="goCalendar">
@@ -92,6 +97,11 @@
 			goAddressBook() {
 				uni.navigateTo({
 					url: './addressBook',
+				});
+			},
+			goModalBook() {
+				uni.navigateTo({
+					url: './modal',
 				});
 			}
 		}

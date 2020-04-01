@@ -1,7 +1,7 @@
 <template>
 	<view class="main">
 		<view class="content">
-			<swipers />
+			<swipers :list='list' />
 			<view v-if="hasLogin" class="hello">
 				<view class="title">
 					您好 {{userName}}，您已成功登录。
@@ -30,6 +30,20 @@
 		},
 		data() {
 			return {
+				list: [
+					{
+						img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
+					},
+					{
+						img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big37006.jpg'
+					},
+					{
+						img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
+					},
+					{
+						img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+					},
+				]
 			}
 		},
 		onLoad() {

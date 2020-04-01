@@ -71,6 +71,12 @@
 			}
 		},
 		{
+			"path": "pages/my/modal",
+			"style": {
+				"navigationBarTitleText": "模态窗"
+			}
+		},
+		{
 			"path": "pages/style/index",
 			"style": {
 				"navigationBarTitleText": "样式"

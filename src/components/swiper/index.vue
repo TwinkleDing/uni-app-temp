@@ -20,6 +20,12 @@
 <script>
 export default {
   name: 'swiper',
+  props: {
+    list: {
+      type: Array,
+      default: []
+    }
+  },
   data() {
     return {
       indicatorDots: true,
@@ -27,20 +33,6 @@ export default {
       interval: 2000,
       duration: 500,
       activeColor: '#FF80AB',
-      list: [
-        {
-          img: '/static/lol/big25011.jpg'
-        },
-        {
-          img: '/static/lol/big37006.jpg'
-        },
-        {
-          img: '/static/lol/big39000.jpg'
-        },
-        {
-          img: '/static/lol/big84000.jpg'
-        },
-      ]
     }
   }
 }
