@@ -118,7 +118,7 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
-		left: 8px;
+		left: 0;
 		height: 1px;
 		content: '';
 		-webkit-transform: scaleY(.5);

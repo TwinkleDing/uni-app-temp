@@ -1,8 +1,8 @@
 <template>
 	<view class="uni-scroll-view">
     <view class="input-row border">
-      <m-input class="m-input" type="text" clearable focus v-model="search" placeholder="请输入账号"></m-input>
-      <text class="title">搜索</text>
+      <m-input class="m-input" type="text" clearable focus v-model="search" placeholder="输入搜索"></m-input>
+      <button class="btn">搜索</button>
     </view>
 		<scroll-view scroll-y class="indexes" :scroll-into-view="'indexes-'+ listCurID" :style="[{height:'calc(100vh - '+ CustomBar + 'px - 50px)'}]"
 		 :scroll-with-animation="true" :enable-back-to-top="true">
@@ -71,8 +71,14 @@
     },
     watch: {
       search(data) {
-        this.listCur = data
-      }
+				setTimeout(() => {
+					this.listCur = data
+					this.listCurID= this.listCur
+				}, 200);
+			},
+			listCurID(data) {
+				console.log(data)
+			}
     },
 		methods: {
 			//获取文字信息
@@ -82,7 +88,6 @@
 			},
 			setCur(e) {
         this.hidden = true;
-        console.log(this.listCur)
 				this.listCur = this.listCur
 			},
 			//滑动选择Item
@@ -92,7 +97,7 @@
 					that = this;
 				//判断选择区域,只有在选择区才会生效
 				if (y > offsettop) {
-					let num = parseInt((y - offsettop) / 20);
+					let num = parseInt((y - offsettop) / 17);
 					this.listCur = that.list[num].name
 				};
 			},
@@ -105,7 +110,7 @@
 			//触发结束选择
 			tEnd() {
 				this.hidden = true;
-        this.listCurID = this.listCur
+				this.listCurID = this.listCur
 			},
 			indexSelect(e) {
 				let that = this;
@@ -245,4 +250,14 @@
 		text-align: center;
 		font-size: 48upx;
   }
+	.input-row{
+		.btn{
+			background: #ff80ab;
+			width: 90px;    
+			margin: 4px;
+			height: 38px;
+			line-height: 38px;
+			color: #fff;
+		}
+	}
 </style>
