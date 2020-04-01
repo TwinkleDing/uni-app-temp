@@ -101,6 +101,7 @@
 
 			//触发全部开始选择
 			tStart() {
+				console.log(1)
 				this.hidden = false
 			},
 

@@ -20,7 +20,7 @@
 				</view>
 				<text class="uni-calendar__backtoday" @click="backtoday">回到今天</text>
 			</view>
-			<view class="uni-calendar__box">
+			<view class="uni-calendar__box"  @touchstart="tStart" @touchend="tEnd">
 				<view v-if="showMonth" class="uni-calendar__box-bg">
 					<text class="uni-calendar__box-bg-text">{{nowDate.month}}</text>
 				</view>
@@ -130,7 +130,9 @@
 				weeks: [],
 				calendar: {},
 				nowDate: '',
-				aniMaskShow: false
+				aniMaskShow: false,
+				startX: 0,
+				endX: 0
 			}
 		},
 		watch: {
@@ -239,6 +241,17 @@
 				this.cale.setDate(date)
 				this.weeks = this.cale.weeks
 				this.nowDate = this.cale.getInfo(date)
+			},
+			tStart(e) {
+				this.startX = e.changedTouches[0].pageX
+			},
+			tEnd(e) {
+				this.endX = e.changedTouches[0].pageX
+				if(this.endX - this.startX > 100) { // 向后一个月
+					this.next()
+				}else if(this.endX - this.startX < -100) { // 向前一个月
+					this.pre()
+				}
 			}
 		}
 	}
