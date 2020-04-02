@@ -1,7 +1,7 @@
 <template>
-	<view class="index">
+	<view class="picture-detail">
 		<uni-nav-bar 
-				background-color='#000'
+				background-color='#ff80ab'
 				color='#fff'
 				:shadow='false'
 				:border='false'
@@ -10,7 +10,7 @@
 				@clickRight='collect'
 				:right-icon="hasCollection? 'star-filled':'star'" 
 				:title='index+1+"/"+imgLength'
-		></uni-nav-bar>
+		/>
 		<swiper @change="swpierChange" :style="{height:screenHeight + 'px'}">
 			<swiper-item v-for="(value,index) in data" :key="value" @click="preImg(index)">
 				<image :src="value" mode="widthFix"></image>
@@ -269,7 +269,6 @@
 
 <style>
 	page {
-		background-color: #000;
 		height: 100%;
 	}
 

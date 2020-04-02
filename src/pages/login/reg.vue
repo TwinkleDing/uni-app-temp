@@ -1,33 +1,42 @@
 <template>
-	<view class="content">
-		<view class="input-group">
-			<view class="input-row border">
-				<text class="title">账号：</text>
-				<m-input type="text" focus clearable v-model="account" placeholder="请输入账号"></m-input>
+	<view class="reg">
+		<uni-nav-bar 
+				title='注册'
+				left-icon="back"
+				@clickLeft='goBack'
+		/>
+		<view class="content">
+			<view class="input-group">
+				<view class="input-row border">
+					<text class="title">账号：</text>
+					<m-input type="text" focus clearable v-model="account" placeholder="请输入账号"></m-input>
+				</view>
+				<view class="input-row border">
+					<text class="title">密码：</text>
+					<m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
+				</view>
+				<view class="input-row">
+					<text class="title">邮箱：</text>
+					<m-input type="text" clearable v-model="email" placeholder="请输入邮箱"></m-input>
+				</view>
 			</view>
-			<view class="input-row border">
-				<text class="title">密码：</text>
-				<m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
+			<view class="btn-row">
+				<button type="primary" class="primary" @tap="register">注册</button>
 			</view>
-			<view class="input-row">
-				<text class="title">邮箱：</text>
-				<m-input type="text" clearable v-model="email" placeholder="请输入邮箱"></m-input>
-			</view>
-		</view>
-		<view class="btn-row">
-			<button type="primary" class="primary" @tap="register">注册</button>
 		</view>
 	</view>
 </template>
 
 <script>
-  import Vue from 'vue';
-	import service from '@/service.ts';
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
 	import mInput from '@/components/m-input.vue';
+	import service from '@/service.ts';
+	import "@/style/login.css";
 
-	export default Vue.extend({
+	export default{
 		components: {
-			mInput
+			mInput,
+      uniNavBar
 		},
 		data() {
 			return {
@@ -37,6 +46,9 @@
 			}
 		},
 		methods: {
+			goBack() {
+				uni.navigateBack()
+			},
 			register() {
 				/**
 				 * 客户端对账号信息进行一些必要的校验。
@@ -78,7 +90,7 @@
 				});
 			}
 		}
-	})
+	}
 </script>
 
 <style>

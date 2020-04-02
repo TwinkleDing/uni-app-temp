@@ -1,199 +1,207 @@
 <template>
-  <view class='modal'>
-		<view class="du-bar bg-white margin-top">
-			<view class="action">
-				<text class="duIcon-title text-orange "></text> 普通窗口
-			</view>
-			<view class="action">
-				<button class="du-btn bg-green shadow" @tap="showModal" data-target="Modal">Modal</button>
-			</view>
-		</view>
-		<view class="du-modal" :class="modalName=='Modal'?'show':''">
-			<view class="du-dialog">
-				<view class="du-bar bg-white justify-end">
-					<view class="modal-content">Modal标题</view>
-					<view class="action" @tap="hideModal">
-            <uni-icons type='close' size='22' />
-					</view>
+	<view>
+		<uni-nav-bar
+			title='模态窗'
+			left-icon="back"
+			:fixed='true'
+			@clickLeft='goBack'
+		/>
+		<view class='modal'>
+			<view class="du-bar bg-white margin-top">
+				<view class="action">
+					<text class="duIcon-title text-orange "></text> 普通窗口
 				</view>
-				<view class="padding-xl">
-					Modal 内容。
+				<view class="action">
+					<button class="du-btn bg-green shadow" @tap="showModal" data-target="Modal">Modal</button>
 				</view>
 			</view>
-		</view>
-
-		<view class="du-bar bg-white margin-top">
-			<view class="action">
-				<text class="duIcon-title text-orange "></text> 底部窗口
-			</view>
-			<view class="action">
-				<button class="du-btn bg-green shadow" @tap="showModal" data-target="bottomModal">Bottom</button>
-			</view>
-		</view>
-		<view class="du-modal bottom-modal" :class="modalName=='bottomModal'?'show':''">
-			<view class="du-dialog">
-				<view class="du-bar bg-white">
-					<view class="action text-green">确定</view>
-					<view class="action text-blue" @tap="hideModal">取消</view>
-				</view>
-				<view class="padding-xl">
-					Modal 内容。
-				</view>
-			</view>
-		</view>
-
-		<view class="du-bar bg-white margin-top">
-			<view class="action">
-				<text class="duIcon-title text-orange "></text> 对话窗口
-			</view>
-			<view class="action">
-				<button class="du-btn bg-green shadow" @tap="showModal" data-target="DialogModal1">Dialog</button>
-				<button class="du-btn bg-blue shadow margin-left" @tap="showModal" data-target="DialogModal2">Dialog</button>
-			</view>
-		</view>
-		<view class="du-modal" :class="modalName=='DialogModal1'?'show':''">
-			<view class="du-dialog">
-				<view class="du-bar bg-white justify-end">
-					<view class="modal-content">Modal标题</view>
-					<view class="action" @tap="hideModal">
-            <uni-icons type='close' size='22' />
-					</view>
-				</view>
-				<view class="padding-xl">
-					Modal 内容。
-				</view>
-				<view class="du-bar bg-white justify-end">
-					<view class="action">
-						<button class="du-btn line-green text-green" @tap="hideModal">取消</button>
-						<button class="du-btn bg-green margin-left" @tap="hideModal">确定</button>
-
-					</view>
-				</view>
-			</view>
-		</view>
-
-		<view class="du-modal" :class="modalName=='DialogModal2'?'show':''">
-			<view class="du-dialog">
-				<view class="du-bar bg-white justify-end">
-					<view class="modal-content">Modal标题</view>
-					<view class="action" @tap="hideModal">
-            <uni-icons type='close' size='22' />
-					</view>
-				</view>
-				<view class="padding-xl">
-					Modal 内容。
-				</view>
-				<view class="du-bar bg-white">
-					<view class="action margin-0 flex-sub text-green " @tap="hideModal">
-						<text class="duIcon-moneybag"></text>微信支付</view>
-					<view class="action margin-0 flex-sub text-green solid-left" @tap="hideModal">取消</view>
-					<view class="action margin-0 flex-sub  solid-left" @tap="hideModal">确定</view>
-				</view>
-			</view>
-		</view>
-
-		<view class="du-bar bg-white margin-top">
-			<view class="action">
-				<text class="duIcon-title text-orange "></text> 图片窗口
-			</view>
-			<view class="action">
-				<button class="du-btn bg-green shadow" @tap="showModal" data-target="Image">Image</button>
-			</view>
-		</view>
-
-		<view class="du-modal" :class="modalName=='Image'?'show':''">
-			<view class="du-dialog">
-				<view class="bg-img" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big91012.jpg');height:200px;background-size: 100% 100%;">
-					<view class="du-bar justify-end text-white">
+			<view class="du-modal" :class="modalName=='Modal'?'show':''">
+				<view class="du-dialog">
+					<view class="du-bar bg-white justify-end">
+						<view class="modal-content">Modal标题</view>
 						<view class="action" @tap="hideModal">
-              <uni-icons type='close' size='22' />
+							<uni-icons type='close' size='22' />
+						</view>
+					</view>
+					<view class="padding-xl">
+						Modal 内容。
+					</view>
+				</view>
+			</view>
+
+			<view class="du-bar bg-white margin-top">
+				<view class="action">
+					<text class="duIcon-title text-orange "></text> 底部窗口
+				</view>
+				<view class="action">
+					<button class="du-btn bg-green shadow" @tap="showModal" data-target="bottomModal">Bottom</button>
+				</view>
+			</view>
+			<view class="du-modal bottom-modal" :class="modalName=='bottomModal'?'show':''">
+				<view class="du-dialog">
+					<view class="du-bar bg-white">
+						<view class="action text-green">确定</view>
+						<view class="action text-blue" @tap="hideModal">取消</view>
+					</view>
+					<view class="padding-xl">
+						Modal 内容。
+					</view>
+				</view>
+			</view>
+
+			<view class="du-bar bg-white margin-top">
+				<view class="action">
+					<text class="duIcon-title text-orange "></text> 对话窗口
+				</view>
+				<view class="action">
+					<button class="du-btn bg-green shadow" @tap="showModal" data-target="DialogModal1">Dialog</button>
+					<button class="du-btn bg-blue shadow margin-left" @tap="showModal" data-target="DialogModal2">Dialog</button>
+				</view>
+			</view>
+			<view class="du-modal" :class="modalName=='DialogModal1'?'show':''">
+				<view class="du-dialog">
+					<view class="du-bar bg-white justify-end">
+						<view class="modal-content">Modal标题</view>
+						<view class="action" @tap="hideModal">
+							<uni-icons type='close' size='22' />
+						</view>
+					</view>
+					<view class="padding-xl">
+						Modal 内容。
+					</view>
+					<view class="du-bar bg-white justify-end">
+						<view class="action">
+							<button class="du-btn line-green text-green" @tap="hideModal">取消</button>
+							<button class="du-btn bg-green margin-left" @tap="hideModal">确定</button>
+
 						</view>
 					</view>
 				</view>
-				<view class="du-bar bg-white">
-					<view class="action margin-0 flex-sub  solid-left" @tap="hideModal">我知道了</view>
+			</view>
+
+			<view class="du-modal" :class="modalName=='DialogModal2'?'show':''">
+				<view class="du-dialog">
+					<view class="du-bar bg-white justify-end">
+						<view class="modal-content">Modal标题</view>
+						<view class="action" @tap="hideModal">
+							<uni-icons type='close' size='22' />
+						</view>
+					</view>
+					<view class="padding-xl">
+						Modal 内容。
+					</view>
+					<view class="du-bar bg-white">
+						<view class="action margin-0 flex-sub text-green " @tap="hideModal">
+							<text class="duIcon-moneybag"></text>微信支付</view>
+						<view class="action margin-0 flex-sub text-green solid-left" @tap="hideModal">取消</view>
+						<view class="action margin-0 flex-sub  solid-left" @tap="hideModal">确定</view>
+					</view>
 				</view>
 			</view>
-		</view>
 
-
-		<view class="du-bar bg-white margin-top">
-			<view class="action">
-				<text class="duIcon-title text-orange "></text> 单选窗口
+			<view class="du-bar bg-white margin-top">
+				<view class="action">
+					<text class="duIcon-title text-orange "></text> 图片窗口
+				</view>
+				<view class="action">
+					<button class="du-btn bg-green shadow" @tap="showModal" data-target="Image">Image</button>
+				</view>
 			</view>
-			<view class="action">
-				<button class="du-btn bg-green shadow" @tap="showModal" data-target="RadioModal">Radio</button>
-			</view>
-		</view>
 
-		<view class="du-modal" :class="modalName=='RadioModal'?'show':''" @tap="hideModal">
-			<view class="du-dialog" @tap.stop="">
-				<radio-group class="block" @change="RadioChange">
+			<view class="du-modal" :class="modalName=='Image'?'show':''">
+				<view class="du-dialog">
+					<view class="bg-img" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big91012.jpg');height:200px;background-size: 100% 100%;">
+						<view class="du-bar justify-end text-white">
+							<view class="action" @tap="hideModal">
+								<uni-icons type='close' size='22' />
+							</view>
+						</view>
+					</view>
+					<view class="du-bar bg-white">
+						<view class="action margin-0 flex-sub  solid-left" @tap="hideModal">我知道了</view>
+					</view>
+				</view>
+			</view>
+
+
+			<view class="du-bar bg-white margin-top">
+				<view class="action">
+					<text class="duIcon-title text-orange "></text> 单选窗口
+				</view>
+				<view class="action">
+					<button class="du-btn bg-green shadow" @tap="showModal" data-target="RadioModal">Radio</button>
+				</view>
+			</view>
+
+			<view class="du-modal" :class="modalName=='RadioModal'?'show':''" @tap="hideModal">
+				<view class="du-dialog" @tap.stop="">
+					<radio-group class="block" @change="RadioChange">
+						<view class="du-list menu text-left">
+							<view class="du-item" v-for="(item,index) in 5" :key="index">
+								<label class="flex justify-between align-center flex-sub">
+									<view class="flex-sub">Item {{index +1}}</view>
+									<radio class="round" :class="radio=='radio' + index?'checked':''" :checked="radio=='radio' + index?true:false"
+									:value="'radio' + index"></radio>
+								</label>
+							</view>
+						</view>
+					</radio-group>
+				</view>
+			</view>
+
+			<view class="du-bar bg-white margin-top">
+				<view class="action">
+					<text class="duIcon-title text-orange "></text> 多选窗口
+				</view>
+				<view class="action">
+					<button class="du-btn bg-green shadow" @tap="showModal" data-target="ChooseModal">Choose</button>
+				</view>
+			</view>
+			<view class="du-modal bottom-modal" :class="modalName=='ChooseModal'?'show':''" @tap="hideModal">
+				<view class="du-dialog" @tap.stop="">
+					<view class="du-bar bg-white">
+						<view class="action text-blue" @tap="hideModal">取消</view>
+						<view class="action text-green" @tap="hideModal">确定</view>
+					</view>
+					<view class="grid col-3 padding-sm">
+						<view v-for="(item,index) in checkbox" class="padding-xs" :key="index">
+							<button class="du-btn orange lg block" :class="item.checked?'bg-orange':'line-orange'" @tap="ChooseCheckbox"
+							:data-value="item.value"> {{item.name}}
+								<view class="du-tag sm round" :class="item.checked?'bg-white text-orange':'bg-orange'" v-if="item.hot">HOT</view>
+							</button>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view class="du-bar bg-white margin-top">
+				<view class="action">
+					<text class="duIcon-title text-orange "></text> 侧边抽屉
+				</view>
+				<view class="action">
+					<button class="du-btn bg-green shadow" @tap="showModal" data-target="DrawerModalL">Left</button>
+					<button class="du-btn bg-blue shadow margin-left" @tap="showModal" data-target="DrawerModalR">Right</button>
+				</view>
+			</view>
+			<view class="du-modal drawer-modal justify-start" :class="modalName=='DrawerModalL'?'show':''" @tap="hideModal">
+				<view class="du-dialog basis-lg" @tap.stop="" :style="[{top:CustomBar+'px',height:'calc(100vh - ' + CustomBar + 'px)'}]">
 					<view class="du-list menu text-left">
-						<view class="du-item" v-for="(item,index) in 5" :key="index">
-							<label class="flex justify-between align-center flex-sub">
-								<view class="flex-sub">Item {{index +1}}</view>
-								<radio class="round" :class="radio=='radio' + index?'checked':''" :checked="radio=='radio' + index?true:false"
-								 :value="'radio' + index"></radio>
-							</label>
-						</view>
-					</view>
-				</radio-group>
-			</view>
-		</view>
-
-		<view class="du-bar bg-white margin-top">
-			<view class="action">
-				<text class="duIcon-title text-orange "></text> 多选窗口
-			</view>
-			<view class="action">
-				<button class="du-btn bg-green shadow" @tap="showModal" data-target="ChooseModal">Choose</button>
-			</view>
-		</view>
-		<view class="du-modal bottom-modal" :class="modalName=='ChooseModal'?'show':''" @tap="hideModal">
-			<view class="du-dialog" @tap.stop="">
-				<view class="du-bar bg-white">
-					<view class="action text-blue" @tap="hideModal">取消</view>
-					<view class="action text-green" @tap="hideModal">确定</view>
-				</view>
-				<view class="grid col-3 padding-sm">
-					<view v-for="(item,index) in checkbox" class="padding-xs" :key="index">
-						<button class="du-btn orange lg block" :class="item.checked?'bg-orange':'line-orange'" @tap="ChooseCheckbox"
-						 :data-value="item.value"> {{item.name}}
-							<view class="du-tag sm round" :class="item.checked?'bg-white text-orange':'bg-orange'" v-if="item.hot">HOT</view>
-						</button>
-					</view>
-				</view>
-			</view>
-		</view>
-
-		<view class="du-bar bg-white margin-top">
-			<view class="action">
-				<text class="duIcon-title text-orange "></text> 侧边抽屉
-			</view>
-			<view class="action">
-				<button class="du-btn bg-green shadow" @tap="showModal" data-target="DrawerModalL">Left</button>
-				<button class="du-btn bg-blue shadow margin-left" @tap="showModal" data-target="DrawerModalR">Right</button>
-			</view>
-		</view>
-		<view class="du-modal drawer-modal justify-start" :class="modalName=='DrawerModalL'?'show':''" @tap="hideModal">
-			<view class="du-dialog basis-lg" @tap.stop="" :style="[{top:CustomBar+'px',height:'calc(100vh - ' + CustomBar + 'px)'}]">
-				<view class="du-list menu text-left">
-					<view class="du-item arrow" v-for="(item,index) in 5" :key="index">
-						<view class="modal-content">
-							<view>Item {{index +1}}</view>
+						<view class="du-item arrow" v-for="(item,index) in 5" :key="index">
+							<view class="modal-content">
+								<view>Item {{index +1}}</view>
+							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-		</view>
 
-		<view class="du-modal drawer-modal justify-end" :class="modalName=='DrawerModalR'?'show':''" @tap="hideModal">
-			<view class="du-dialog basis-lg" @tap.stop="" :style="[{top:CustomBar+'px',height:'calc(100vh - ' + CustomBar + 'px)'}]">
-				<view class="du-list menu text-left">
-					<view class="du-item arrow" v-for="(item,index) in 5" :key="index">
-						<view class="modal-content">
-							<view>Item {{index +1}}</view>
+			<view class="du-modal drawer-modal justify-end" :class="modalName=='DrawerModalR'?'show':''" @tap="hideModal">
+				<view class="du-dialog basis-lg" @tap.stop="" :style="[{top:CustomBar+'px',height:'calc(100vh - ' + CustomBar + 'px)'}]">
+					<view class="du-list menu text-left">
+						<view class="du-item arrow" v-for="(item,index) in 5" :key="index">
+							<view class="modal-content">
+								<view>Item {{index +1}}</view>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -204,10 +212,12 @@
 
 <script>
 	import uniIcons from "@/components/uni-icons/uni-icons.vue";
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
 	export default {
     name: 'modal',
     components: {
-      uniIcons
+      uniIcons,
+			uniNavBar
     },
 		data() {
 			return {
@@ -248,6 +258,9 @@
 			};
 		},
 		methods: {
+			goBack() {
+				uni.navigateBack()
+			},
 			showModal(e) {
         this.modalName = e.currentTarget.dataset.target
         console.log(this.modalName)
@@ -279,7 +292,7 @@
     display: flex;
     position: relative;
     align-items: center;
-    min-height: 50px;
+    min-height: 100upx;
     justify-content: space-between;
     .action {
       display: flex;
@@ -288,46 +301,47 @@
       justify-content: center;
       max-width: 100%;
       &:first-child {
-        margin-left: 15px;
-        font-size: 15px;
+        margin-left: 30upx;
+        font-size: 30upx;
         &>uni-text[class*="duIcon-"] {
           margin-left: -0.3em;
           margin-right: 0.3em;
         }
       }
       &:last-child {
-        margin-right: 15px;
+        margin-right: 30upx;
+        font-size: 30upx;
       }
       .margin-left {
-        margin-left: 15px;
+        margin-left: 30upx;
       }
       .duIcon-title{
         position: relative;
         padding-left: 20px;
         &:before {
           content: " ";
-          width: 7px;
-          height: 7px;
+          width: 14upx;
+          height: 14upx;
           border-radius: 50%;
           background: #f37b1d;
           position: absolute;
-          left: 7px;
-          top: -3px;
+          left: 17upx;
+          top: -6upx;
         }
       }
     }
     .modal-content {
       position: absolute;
       text-align: center;
-      width: calc(100% - 170px);
+      width: calc(100% - 340upx);
       left: 0;
       right: 0;
       bottom: 0;
       top: 0;
       margin: auto;
-      height: 30px;
-      font-size: 16px;
-      line-height: 30px;
+      height: 60upx;
+      font-size: 32upx;
+      line-height: 60upx;
       dursor: none;
       pointer-events: none;
       text-overflow: ellipsis;
@@ -341,9 +355,9 @@
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-      padding: 0 15px;
-      font-size: 14px;
-      height: 32px;
+      padding: 0 30upx;
+      font-size: 28upx;
+      height: 64upx;
       line-height: 1;
       text-align: center;
       text-decoration: none;
@@ -381,18 +395,18 @@
       vertical-align: middle;
       margin-left: auto;
       margin-right: auto;
-      width: 340px;
+      width: 720upx;
       max-width: 100%;
       background-color: #f8f8f8;
-      border-radius: 5px;
+      border-radius: 10upx;
       overflow: hidden;
       &>.du-bar:first-child .action {
-        min-width: 50px;
+        min-width: 100upx;
         margin-right: 0;
-        min-height: 50px;
+        min-height: 100upx;
       }
       .padding-xl {
-        padding: 25px;
+        padding: 50upx;
       }
       .justify-end {
         justify-content: flex-end;
@@ -408,14 +422,14 @@
     pointer-events: auto;
   }
   .shadow[class*="-green"] {
-    box-shadow: 3px 3px 4px rgba(48, 156, 63, 0.2);
+    box-shadow: 6upx 6upx 8upx rgba(48, 156, 63, 0.2);
   }
   .bg-green {
     background-color: #39b54a;
     color: #ffffff;
   }
   .shadow[class*="-blue"] {
-    box-shadow: 3px 3px 4px rgba(0, 102, 204, 0.2);
+    box-shadow: 6upx 6upx 8upx rgba(0, 102, 204, 0.2);
   }
   .bg-blue {
     background-color: #0081ff;
@@ -432,7 +446,7 @@
     color: #f37b1d;
   }
   .margin-top {
-    margin-top: 15px;
+    margin-top: 30upx;
   }
   .bg-white {
     background-color: #ffffff;
@@ -474,11 +488,27 @@
 .justify-end {
   justify-content: flex-end;
 }
+.menu {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	.arrow{
+		width: 100%;
+		height:40upx;
+		padding: 20upx;
+		border-bottom: 1px solid #f37b1d;
+		color: #ff80ab;
+	}
+}
+
 .du-modal.drawer-modal.justify-start .du-dialog {
 	transform: translateX(-100%);
+	text-align: right;
 }
 .du-modal.drawer-modal.justify-end .du-dialog {
 	transform: translateX(100%);
+	text-align: left;
 }
 .du-modal.drawer-modal.show .du-dialog {
 	transform: translateX(0%);
@@ -489,11 +519,17 @@
 .justify-between {
   justify-content: space-between;
 }
+.justify-start {
+	justify-content: flex-start;
+}
+.justify-end {
+	justify-content: flex-end;
+}
 .align-center {
   align-items: center;
 }
 .flex-sub {
-  padding: 5px 10px;
+  padding: 10upx 20upx;
 }
 .du-tag {
 	font-size: 24upx;
@@ -525,9 +561,9 @@ uni-button .du-tag[data-v-6de97978] {
     right: 4px;
 }
 .du-tag.sm {
-    font-size: 10px;
-    padding: 0px 6px;
-    height: 16px;
+    font-size: 20upx;
+    padding: 0px 12upx;
+    height: 32upx;
 }
 .round {
     border-radius: 2500px;

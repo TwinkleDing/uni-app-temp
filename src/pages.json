@@ -77,6 +77,12 @@
 			}
 		},
 		{
+			"path": "pages/my/icon",
+			"style": {
+				"navigationBarTitleText": "图标"
+			}
+		},
+		{
 			"path": "pages/style/index",
 			"style": {
 				"navigationBarTitleText": "样式"
@@ -86,7 +92,8 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarBackgroundColor": "#FF80AB",
-		"backgroundColor": "#EFEFEF"
+		"backgroundColor": "#EFEFEF",
+		"navigationStyle": "custom"
 	},
 	"tabBar": {
 		"color": "#444444",

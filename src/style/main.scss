@@ -1,0 +1,24 @@
+template {
+  display: flex;
+  flex: 1;
+}
+button.primary {
+  background-color: #0faeff;
+}
+/*每个页面公共css */
+page {
+  min-height: 100%;
+  display: block;
+  font-size: 16px;
+  background-color: #EFEFEF;
+}
+/* 原生组件模式下需要注意组件外部样式 */
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: #efeff4;
+  padding: 10px;
+  width: 100vw;
+  box-sizing: border-box;
+}

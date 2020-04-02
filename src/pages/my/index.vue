@@ -1,58 +1,73 @@
 <template>
-	<view class="center">
-		<view class="logo" @click="bindLogin" :hover-class="!login ? 'logo-hover' : ''">
-			<image class="logo-img" :src="avatarUrl"></image>
-			<view class="logo-title">
-				<text class="uer-name">Hi，{{hasLogin ? userName : '您未登录'}}</text>
-				<text class="go-login navigat-arrow" v-if="!login">&#xe65e;</text>
+	<view class='my'>
+		<uni-nav-bar
+			title='我的'
+			:fixed='true'
+		/>
+		<view class="center">
+			<view class="logo" @click="bindLogin" :hover-class="!login ? 'logo-hover' : ''">
+				<image class="logo-img" :src="avatarUrl"></image>
+				<view class="logo-title">
+					<text class="uer-name">Hi，{{hasLogin ? userName : '您未登录'}}</text>
+					<text class="go-login navigat-arrow" v-if="!login">&#xe65e;</text>
+				</view>
 			</view>
-		</view>
-		<view class="center-list">
-			<view class="center-list-item border-bottom" @click="goCollection">
-				<text class="list-icon">&#xe60c;</text>
-				<text class="list-text">收藏图片</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+			<view class="center-list">
+				<view class="center-list-item border-bottom" @click="goCollection">
+					<text class="list-icon">&#xe60c;</text>
+					<text class="list-text">收藏图片</text>
+					<text class="navigat-arrow">&#xe65e;</text>
+				</view>
+				<view class="center-list-item border-bottom" @click="goCard">
+					<text class="list-icon">&#xe603;</text>
+					<text class="list-text">我的卡券</text>
+					<text class="navigat-arrow">&#xe65e;</text>
+				</view>
 			</view>
-			<view class="center-list-item border-bottom" @click="goCard">
-				<text class="list-icon">&#xe603;</text>
-				<text class="list-text">我的卡券</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+			<view class="center-list">
+				<view class="center-list-item border-bottom" @click="goAddressBook">
+					<text class="list-icon">&#xe603;</text>
+					<text class="list-text">通讯录</text>
+					<text class="navigat-arrow">&#xe65e;</text>
+				</view>
+				<view class="center-list-item border-bottom" @click="goModalBook">
+					<text class="list-icon">&#xe603;</text>
+					<text class="list-text">模态窗</text>
+					<text class="navigat-arrow">&#xe65e;</text>
+				</view>
+				<view class="center-list-item border-bottom" @click="goIcon">
+					<text class="list-icon">&#xe603;</text>
+					<text class="list-text">Icon</text>
+					<text class="navigat-arrow">&#xe65e;</text>
+				</view>
 			</view>
-		</view>
-		<view class="center-list">
-			<view class="center-list-item border-bottom" @click="goAddressBook">
-				<text class="list-icon">&#xe603;</text>
-				<text class="list-text">通讯录</text>
-				<text class="navigat-arrow">&#xe65e;</text>
-			</view>
-			<view class="center-list-item border-bottom" @click="goModalBook">
-				<text class="list-icon">&#xe603;</text>
-				<text class="list-text">模态窗</text>
-				<text class="navigat-arrow">&#xe65e;</text>
-			</view>
-		</view>
-		<view class="center-list">
-			<view class="center-list-item border-bottom" @click="goCalendar">
-				<text class="list-icon">&#xe603;</text>
-				<text class="list-text">日历信息</text>
-				<text class="navigat-arrow">&#xe65e;</text>
-			</view>
-			<view class="center-list-item">
-				<text class="list-icon">&#xe609;</text>
-				<text class="list-text">账号管理</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+			<view class="center-list">
+				<view class="center-list-item border-bottom" @click="goCalendar">
+					<text class="list-icon">&#xe603;</text>
+					<text class="list-text">日历信息</text>
+					<text class="navigat-arrow">&#xe65e;</text>
+				</view>
+				<view class="center-list-item">
+					<text class="list-icon">&#xe609;</text>
+					<text class="list-text">账号管理</text>
+					<text class="navigat-arrow">&#xe65e;</text>
+				</view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-  import Vue from 'vue';
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
 	import {
 		mapGetters,
 		mapMutations
 	} from 'vuex'
-	export default Vue.extend({
+	export default{
+		name: 'my',
+		components: {
+			uniNavBar
+		},
 		data() {
 			return {
 				login: false,
@@ -103,9 +118,14 @@
 				uni.navigateTo({
 					url: './modal',
 				});
+			},
+			goIcon() {
+				uni.navigateTo({
+					url: './icon',
+				});
 			}
 		}
-	})
+	}
 </script>
 
 <style>

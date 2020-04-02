@@ -1,47 +1,57 @@
 <template>
-	<view class="content">
-		<view class="input-group">
-			<view class="input-row border">
-				<text class="title">账号：</text>
-				<m-input class="m-input" type="text" clearable focus v-model="account" placeholder="请输入账号"></m-input>
-			</view>
-			<view class="input-row">
-				<text class="title">密码：</text>
-				<m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
-			</view>
-		</view>
-		<view class="btn-row">
-			<button type="primary" class="primary" @tap="toLogin">登录</button>
-		</view>
-		<view class="action-row">
-			<navigator url="./reg">注册账号</navigator>
-			<text>|</text>
-			<navigator url="./pwd">忘记密码</navigator>
-		</view>
+	<view class="login">
+		<uni-nav-bar 
+				title='登录'
+		/>
+    <view class="content">
+      <view class="input-group">
+        <view class="input-row border">
+          <text class="title">账号：</text>
+          <m-input class="m-input" type="text" clearable focus v-model="account" placeholder="请输入账号"></m-input>
+        </view>
+        <view class="input-row">
+          <text class="title">密码：</text>
+          <m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
+        </view>
+      </view>
+      <view class="btn-row">
+        <button type="primary" class="primary" @tap="toLogin">登录</button>
+      </view>
+      <view class="action-row">
+        <navigator url="./reg">注册账号</navigator>
+        <text>|</text>
+        <navigator url="./pwd">忘记密码</navigator>
+      </view>
 
-		<view class="oauth-row" v-if="hasProvider" v-bind:style="{top: positionTop + 'px'}">
-			<view class="oauth-image" v-for="provider in providerList" :key="provider.value">
-				<image :src="provider.image" @tap="oauth(provider.value)"></image>
-				<!-- #ifdef MP-WEIXIN -->
-				<button v-if="!isDevtools" open-type="getUserInfo" @getuserinfo="getUserInfo"></button>
-				<!-- #endif -->
-			</view>
-		</view>
-		<slider-verify :isShow="sliderVerifyFLag" 
-			@touchSliderResult="verifyResult" 
-			ref="verifyElement"></slider-verify>
-	</view>
+      <view class="oauth-row" v-if="hasProvider" v-bind:style="{top: positionTop + 'px'}">
+        <view class="oauth-image" v-for="provider in providerList" :key="provider.value">
+          <image :src="provider.image" @tap="oauth(provider.value)"></image>
+          <!-- #ifdef MP-WEIXIN -->
+          <button v-if="!isDevtools" open-type="getUserInfo" @getuserinfo="getUserInfo"></button>
+          <!-- #endif -->
+        </view>
+      </view>
+      <slider-verify :isShow="sliderVerifyFLag" 
+        @touchSliderResult="verifyResult" 
+        @close="closeSlider"
+        ref="verifyElement"></slider-verify>
+    </view>
+  </view>
 </template>
 <script>
   import {mapGetters, mapMutations} from 'vuex';
-  import mInput from '@/components/m-input.vue';
   import service from '@/service.ts';
-  import {showToast1, showToast2} from '@/util/index';
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
+  import mInput from '@/components/m-input.vue';
   import sliderVerify from '@/components/slider-verify/slider-verify.vue';
+  import {showToast1, showToast2} from '@/util/index';
+  import "@/style/login.css";
+  
   export default {
     components: {
       mInput,
-      sliderVerify
+      sliderVerify,
+      uniNavBar
     },
     data() {
       return {
@@ -132,7 +142,6 @@
         }
       },
       oauth(value) {
-        console.log(value)
         uni.login({
           provider: value,
           success: (res) => {
@@ -188,20 +197,23 @@
       verifyResult(res) {
         let that = this
         if(res) {
-        uni.showToast({
-          icon: 'none',
-          title: '验证成功',
-          duration: 1000,
-          success() {
-            that.sliderVerifyFLag = false;
-            setTimeout(()=>{
-              that.bindLogin();
-            }, 1000);
-          }
-        });
+          uni.showToast({
+            icon: 'none',
+            title: '验证成功',
+            duration: 1000,
+            success() {
+              that.sliderVerifyFLag = false;
+              setTimeout(()=>{
+                that.bindLogin();
+              }, 1000);
+            }
+          });
         }else{
           showToast2('验证失败，请重新验证');
         }
+      },
+      closeSlider() {
+        this.sliderVerifyFLag = false;
       }
     },
     onReady() {
