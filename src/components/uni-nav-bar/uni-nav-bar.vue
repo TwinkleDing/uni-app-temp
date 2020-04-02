@@ -1,8 +1,8 @@
 <template>
 	<view class="uni-navbar">
+		<uni-status-bar v-if="statusBar" />
 		<view :class="{ 'uni-navbar--fixed': fixed, 'uni-navbar--shadow': shadow, 'uni-navbar--border': border }" :style="{ 'background-color': backgroundColor }"
 		 class="uni-navbar__content">
-			<uni-status-bar v-if="statusBar" />
 			<view :style="{ color: color,backgroundColor: backgroundColor }" class="uni-navbar__header uni-navbar__content_view">
 				<view @tap="onClickLeft" class="uni-navbar__header-btns uni-navbar__header-btns-left uni-navbar__content_view">
 					<view class="uni-navbar__content_view" v-if="leftIcon.length">
@@ -134,6 +134,7 @@
 		width: 750rpx;
 		background-color: $uni-bg-color;
 		overflow: hidden;
+		margin-top: var(--status-bar-height);
 	}
 
 	.uni-navbar__content_view {

@@ -1,5 +1,5 @@
 {
-    "name" : "app-temp",
+    "name" : "DIY",
     "appid" : "__UNI__A9406F7",
     "description" : "",
     "versionName" : "1.0.0",
@@ -49,7 +49,7 @@
         /* SDK配置 */
         "usingComponents" : true,
         "splashscreen" : {
-            "alwaysShowBeforeRender" : false
+            "alwaysShowBeforeRender" : true
         }
     },
     "quickapp" : {},

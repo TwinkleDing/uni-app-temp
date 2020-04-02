@@ -18,8 +18,11 @@
 
 <style lang="scss" scoped>
 	.uni-status-bar {
-		width: 750rpx;
-		height: 20px;
-		// height: var(--status-bar-height);
+		width: 100vw;
+		// height: 20px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: var(--status-bar-height);
 	}
 </style>
