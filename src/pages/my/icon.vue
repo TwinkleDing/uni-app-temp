@@ -1,7 +1,7 @@
 <template>
   <view class="style-icon">
     <uni-nav-bar
-      title='我的收藏'
+      title='Icon'
       left-icon="back"
       :fixed='true'
       @clickLeft='goBack'
