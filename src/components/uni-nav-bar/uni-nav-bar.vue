@@ -84,7 +84,7 @@
 			},
 			statusBar: {
 				type: [Boolean, String],
-				default: false
+				default: true
 			},
 			shadow: {
 				type: [String, Boolean],
