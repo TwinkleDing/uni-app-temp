@@ -1,5 +1,12 @@
 <template>
 	<view class="index">
+		<uni-nav-bar
+				background-color='#ff80ab'
+				color='#fff'
+				title='图片'
+				:shadow='false'
+				:border='false'
+		/>
 		<view class="grid">
 			<view class="grid-c-06" v-for="item in lists" :key="item.guid">
 				<view class="panel" @click="goDetail(item)">
@@ -19,9 +26,13 @@
 </template>
 
 <script>
-  import Vue from 'vue';
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
 
-  export default Vue.extend({
+  export default{
+		name: 'pictureIndex',
+		components: {
+			uniNavBar
+		},
 		data() {
 			return {
 				refreshing: false,
@@ -161,7 +172,7 @@
 				})
 			}
 		}
-  })
+  }
 </script>
 
 

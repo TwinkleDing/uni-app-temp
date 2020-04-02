@@ -1,45 +1,60 @@
 <template>
-	<view class="uni-scroll-view">
-    <view class="input-row border">
-      <m-input class="m-input" type="text" clearable focus v-model="search" placeholder="输入搜索"></m-input>
-      <button class="btn">搜索</button>
-    </view>
-		<scroll-view scroll-y class="indexes" :scroll-into-view="'indexes-'+ listCurID" :style="[{height:'calc(100vh - '+ CustomBar + 'px - 50px)'}]"
-		 :scroll-with-animation="true" :enable-back-to-top="true">
-			<block v-for="(item,index) in list" :key="index">
-				<view :class="'indexItem-' + item.name" :id="'indexes-' + item.name" :data-index="item.name">
-					<view class="padding">{{item.name}}</view>
-					<view class="cu-list menu-avatar no-padding">
-						<view class="cu-item" v-for="(items,sub) in 2" :key="sub">
-							<view class="cu-avatar round lg">{{item.name}}</view>
-							<view class="content">
-								<view class="text-grey">{{item.name}}<text class="text-abc">{{list[sub].name}}</text>君</view>
-								<view class="text-gray text-sm">
-									有{{sub+2}}个主子需要伺候
+	<view >
+		<uni-nav-bar
+				background-color='#ff80ab'
+				color='#fff'
+				title='通讯录'
+				left-icon="back"
+				:shadow='false'
+				:border='false'
+				:fixed='true'
+				@clickLeft='goBack'
+		/>
+		<view class="uni-scroll-view">
+			<view class="input-row border">
+				<m-input class="m-input" type="text" clearable focus v-model="search" placeholder="输入搜索"></m-input>
+				<button class="btn">搜索</button>
+			</view>
+			<scroll-view scroll-y class="indexes" :scroll-into-view="'indexes-'+ listCurID" :style="[{height:'calc(100vh - '+ CustomBar + 'px - 50px)'}]"
+			:scroll-with-animation="true" :enable-back-to-top="true">
+				<block v-for="(item,index) in list" :key="index">
+					<view :class="'indexItem-' + item.name" :id="'indexes-' + item.name" :data-index="item.name">
+						<view class="padding">{{item.name}}</view>
+						<view class="cu-list menu-avatar no-padding">
+							<view class="cu-item" v-for="(items,sub) in 2" :key="sub">
+								<view class="cu-avatar round lg">{{item.name}}</view>
+								<view class="content">
+									<view class="text-grey">{{item.name}}<text class="text-abc">{{list[sub].name}}</text>君</view>
+									<view class="text-gray text-sm">
+										有{{sub+2}}个主子需要伺候
+									</view>
 								</view>
 							</view>
 						</view>
 					</view>
+				</block>
+			</scroll-view>
+			<view class="indexBar" :style="[{height:'calc(100vh - ' + CustomBar + 'px - 50px)'}]">
+				<view class="indexBar-box" @touchstart="tStart" @touchend="tEnd" @touchmove.stop="tMove">
+					<view class="indexBar-item" v-for="(item,index) in list" :key="index" :id="index" @touchstart="getCur" @touchend="setCur"> {{item.name}}</view>
 				</view>
-			</block>
-		</scroll-view>
-		<view class="indexBar" :style="[{height:'calc(100vh - ' + CustomBar + 'px - 50px)'}]">
-			<view class="indexBar-box" @touchstart="tStart" @touchend="tEnd" @touchmove.stop="tMove">
-				<view class="indexBar-item" v-for="(item,index) in list" :key="index" :id="index" @touchstart="getCur" @touchend="setCur"> {{item.name}}</view>
 			</view>
-		</view>
-		<!--选择显示-->
-		<view v-show="!hidden" class="indexToast">
-			{{listCur}}
+			<!--选择显示-->
+			<view v-show="!hidden" class="indexToast">
+				{{listCur}}
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
   import mInput from '@/components/m-input.vue';
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
+  import "@/style/login.css";
 	export default {
     components: {
-      mInput
+      mInput,
+			uniNavBar
     },
 		data() {
 			return {
@@ -78,6 +93,9 @@
 			}
     },
 		methods: {
+			goBack() {
+				uni.navigateBack()
+			},
 			//获取文字信息
 			getCur(e) {
         this.hidden = false;

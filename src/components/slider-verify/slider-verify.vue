@@ -116,7 +116,7 @@ export default {
 		
 		// 关闭
 		closeSlider(){
-			this.$emit('touchSliderResult', false);
+			this.$emit('close');
 		}	
 	}
 };

@@ -1,24 +1,40 @@
 <template>
-	<view class="style-icon">
-		<view class="du-bar" :style="[{top:dustomBar + 'px'}]">
-			<view class="search-form round">
-				<text class="cuIcon-search"></text>
-				<input class="search-input" type="text" placeholder="搜索duIcon" confirm-type="search" @input="searchIcon" />
-			</view>
-		</view>
-		<view class="du-list">
-      <view v-show="item.isShow" @click="clIcon(index)" class="du-item" v-for="(item,index) in duIcon" :key="index">
-        <text class="lg text-gray" :class="['cuIcon-' + item.name, active === index ? 'active' : '']"></text>
-        <text class="text-gray" :class="active === index ? 'active' : ''">{{item.name}}</text> 
+  <view class="style-icon">
+    <uni-nav-bar
+        background-color='#ff80ab'
+        color='#fff'
+        title='我的收藏'
+        left-icon="back"
+        :shadow='false'
+        :border='false'
+        :fixed='true'
+        @clickLeft='goBack'
+    />
+    <view>
+      <view class="du-bar" :style="[{top:dustomBar + 'px'}]">
+        <view class="search-form round">
+          <text class="cuIcon-search"></text>
+          <input class="search-input" type="text" placeholder="搜索duIcon" confirm-type="search" @input="searchIcon" />
+        </view>
       </view>
-		</view>
-	</view>
+      <view class="du-list">
+        <view v-show="item.isShow" @click="clIcon(index)" class="du-item" v-for="(item,index) in duIcon" :key="index">
+          <text class="lg text-gray" :class="['cuIcon-' + item.name, active === index ? 'active' : '']"></text>
+          <text class="text-gray" :class="active === index ? 'active' : ''">{{item.name}}</text> 
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script>
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
 	import "@/style/icon.css";
 	export default {
     name: 'styleIcon',
+		components: {
+			uniNavBar
+		},
 		data() {
 			return {
         dustomBar: this.dustomBar,
@@ -917,6 +933,9 @@
 			};
 		},
 		methods: {
+			goBack() {
+				uni.navigateBack()
+			},
 			searchIcon(e) {
 				let key = e.detail.value.toLowerCase();
 				let list = this.duIcon;

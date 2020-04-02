@@ -1,20 +1,33 @@
 <template>
   <view>
-		<hm-balance-card :options="options"></hm-balance-card>
-		<hm-balance-card :options="options"></hm-balance-card>
-		<hm-balance-card :options="options"></hm-balance-card>
-		<hm-balance-card :options="options"></hm-balance-card>
-		<hm-balance-card :options="options"></hm-balance-card>
+		<uni-nav-bar
+				background-color='#ff80ab'
+				color='#fff'
+				title='我的卡券'
+				left-icon="back"
+				:shadow='false'
+				:border='false'
+				:fixed='true'
+				@clickLeft='goBack'
+		/>
+    <view >
+      <hm-balance-card :options="options"></hm-balance-card>
+      <hm-balance-card :options="options"></hm-balance-card>
+      <hm-balance-card :options="options"></hm-balance-card>
+      <hm-balance-card :options="options"></hm-balance-card>
+      <hm-balance-card :options="options"></hm-balance-card>
+    </view>
   </view>
 </template>
 
-<script lang='ts'>
-  import Vue from 'vue';
+<script>
 	import HmBalanceCard from '@/components/hm-balance-card/index.vue';
-  export default Vue.extend({
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
+  export default{
     name: 'Card',
     components: {
-      HmBalanceCard
+      HmBalanceCard,
+      uniNavBar
     },
     data() {
       return {
@@ -34,8 +47,13 @@
             '/static/hm-balance-card/images/img_25821_0_1.png'
         }
       }
+    },
+    methods: {
+			goBack() {
+				uni.navigateBack()
+      }
     }
-  })
+  }
 </script>
 
 <style lang="scss" scoped>

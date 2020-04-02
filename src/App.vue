@@ -16,9 +16,5 @@
 </script>
 
 <style>
-	/* 头条小程序需要把 iconfont 样式放到组件外 */
 	@import "components/m-icon/m-icon.css";
-
-
-	
 </style>

@@ -1,5 +1,12 @@
 <template>
 	<view class="main">
+		<uni-nav-barss 
+				background-color='#ff80ab'
+				color='#fff'
+				title='首页'
+				:shadow='false'
+				:border='false'
+		/>
 		<view class="content">
 			<swipers :list='list' />
 			<view v-if="hasLogin" class="hello">
@@ -20,13 +27,15 @@
 <script lang='ts'>
 	import Vue from 'vue';
 	import {mapGetters, mapMutations} from 'vuex';
+	import uniNavBarss from "@/components/uni-nav-bar/uni-nav-bar.vue";
 	import Detail from './detail.vue';
 	import Swipers from '@/components/swiper/index.vue';
 	export default Vue.extend({
 		name: 'Mains',
 		components: {
 			Detail,
-			Swipers
+			Swipers,
+			uniNavBarss
 		},
 		data() {
 			return {

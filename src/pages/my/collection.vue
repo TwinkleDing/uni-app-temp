@@ -1,29 +1,34 @@
 <template>
 	<view>
+		<uni-nav-bar
+				background-color='#ff80ab'
+				color='#fff'
+				title='我的收藏'
+				left-icon="back"
+				:shadow='false'
+				:border='false'
+				:fixed='true'
+				@clickLeft='goBack'
+		/>
 		<view v-if="collections.length" class="index">
 			<swiper @change="swpierChange" :style="{height:screenHeight + 'px'}">
 				<swiper-item v-for="(value,index) in data" :key="index" @click="preImg(index)">
 					<image :src="value" mode="widthFix"></image>
 				</swiper-item>
 			</swiper>
-			<!-- #ifndef H5 -->
-			<view class="detail-btn-view">
-				<view class="download" @click="download"></view>
-				<!-- #ifdef APP-PLUS -->
-				<view v-if="showBtn" class="setting" @click="setting">设为壁纸</view>
-				<!-- #endif -->
-			</view>
-			<!-- #endif -->
 		</view>
 		<view v-else>暂无收藏</view>
 	</view>
 </template>
 
 <script>
-	import Vue from 'vue';
 	import { mapGetters } from 'vuex';
-	export default Vue.extend( {
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
+	export default{
 		name: 'collections',
+		components: {
+			uniNavBar
+		},
 		data() {
 			return {
 				imgShow: false,
@@ -49,6 +54,9 @@
 			...mapGetters(['hasCollection', 'collections'])
 		},
 		methods: {
+			goBack() {
+				uni.navigateBack()
+			},
 			download() {
 				uni.downloadFile({
 					url: this.data[this.index],
@@ -140,7 +148,7 @@
 				}, 150)
 			}
 		}
-	})
+	}
 </script>
 
 <style>
