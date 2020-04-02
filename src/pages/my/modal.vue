@@ -279,7 +279,7 @@
     display: flex;
     position: relative;
     align-items: center;
-    min-height: 50px;
+    min-height: 100upx;
     justify-content: space-between;
     .action {
       display: flex;
@@ -288,46 +288,47 @@
       justify-content: center;
       max-width: 100%;
       &:first-child {
-        margin-left: 15px;
-        font-size: 15px;
+        margin-left: 30upx;
+        font-size: 30upx;
         &>uni-text[class*="duIcon-"] {
           margin-left: -0.3em;
           margin-right: 0.3em;
         }
       }
       &:last-child {
-        margin-right: 15px;
+        margin-right: 30upx;
+        font-size: 30upx;
       }
       .margin-left {
-        margin-left: 15px;
+        margin-left: 30upx;
       }
       .duIcon-title{
         position: relative;
         padding-left: 20px;
         &:before {
           content: " ";
-          width: 7px;
-          height: 7px;
+          width: 14upx;
+          height: 14upx;
           border-radius: 50%;
           background: #f37b1d;
           position: absolute;
-          left: 7px;
-          top: -3px;
+          left: 17upx;
+          top: -6upx;
         }
       }
     }
     .modal-content {
       position: absolute;
       text-align: center;
-      width: calc(100% - 170px);
+      width: calc(100% - 340upx);
       left: 0;
       right: 0;
       bottom: 0;
       top: 0;
       margin: auto;
-      height: 30px;
-      font-size: 16px;
-      line-height: 30px;
+      height: 60upx;
+      font-size: 32upx;
+      line-height: 60upx;
       dursor: none;
       pointer-events: none;
       text-overflow: ellipsis;
@@ -341,9 +342,9 @@
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-      padding: 0 15px;
-      font-size: 14px;
-      height: 32px;
+      padding: 0 30upx;
+      font-size: 28upx;
+      height: 64upx;
       line-height: 1;
       text-align: center;
       text-decoration: none;
@@ -381,18 +382,18 @@
       vertical-align: middle;
       margin-left: auto;
       margin-right: auto;
-      width: 340px;
+      width: 720upx;
       max-width: 100%;
       background-color: #f8f8f8;
-      border-radius: 5px;
+      border-radius: 10upx;
       overflow: hidden;
       &>.du-bar:first-child .action {
-        min-width: 50px;
+        min-width: 100upx;
         margin-right: 0;
-        min-height: 50px;
+        min-height: 100upx;
       }
       .padding-xl {
-        padding: 25px;
+        padding: 50upx;
       }
       .justify-end {
         justify-content: flex-end;
@@ -408,14 +409,14 @@
     pointer-events: auto;
   }
   .shadow[class*="-green"] {
-    box-shadow: 3px 3px 4px rgba(48, 156, 63, 0.2);
+    box-shadow: 6upx 6upx 8upx rgba(48, 156, 63, 0.2);
   }
   .bg-green {
     background-color: #39b54a;
     color: #ffffff;
   }
   .shadow[class*="-blue"] {
-    box-shadow: 3px 3px 4px rgba(0, 102, 204, 0.2);
+    box-shadow: 6upx 6upx 8upx rgba(0, 102, 204, 0.2);
   }
   .bg-blue {
     background-color: #0081ff;
@@ -432,7 +433,7 @@
     color: #f37b1d;
   }
   .margin-top {
-    margin-top: 15px;
+    margin-top: 30upx;
   }
   .bg-white {
     background-color: #ffffff;
@@ -466,19 +467,29 @@
     border-radius: 0;
     margin: initial;
     transition-duration: 0.3s;
-  }
-  .justify-start {
-    justify-content: flex-start;
-  }
-  .justify-end {
-    justify-content: flex-end;
+		.menu {
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			justify-content: start;
+			.arrow{
+				width: 100%;
+				height:40upx;
+				padding: 20upx;
+				border-bottom: 1px solid #f37b1d;
+				color: #ff80ab;
+			}
+		}
   }
 }
+
 .du-modal.drawer-modal.justify-start .du-dialog {
 	transform: translateX(-100%);
+	text-align: right;
 }
 .du-modal.drawer-modal.justify-end .du-dialog {
 	transform: translateX(100%);
+	text-align: left;
 }
 .du-modal.drawer-modal.show .du-dialog {
 	transform: translateX(0%);
@@ -489,11 +500,17 @@
 .justify-between {
   justify-content: space-between;
 }
+.justify-start {
+	justify-content: flex-start;
+}
+.justify-end {
+	justify-content: flex-end;
+}
 .align-center {
   align-items: center;
 }
 .flex-sub {
-  padding: 5px 10px;
+  padding: 10upx 20upx;
 }
 .du-tag {
 	font-size: 24upx;
@@ -525,9 +542,9 @@ uni-button .du-tag[data-v-6de97978] {
     right: 4px;
 }
 .du-tag.sm {
-    font-size: 10px;
-    padding: 0px 6px;
-    height: 16px;
+    font-size: 20upx;
+    padding: 0px 12upx;
+    height: 32upx;
 }
 .round {
     border-radius: 2500px;
