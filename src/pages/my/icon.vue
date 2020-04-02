@@ -1,13 +1,13 @@
 <template>
 	<view class="style-icon">
-		<view class="cu-bar" :style="[{top:CustomBar + 'px'}]">
+		<view class="du-bar" :style="[{top:dustomBar + 'px'}]">
 			<view class="search-form round">
-				<text class="cuIcon-search"></text>
-				<input class="search-input" type="text" placeholder="搜索cuIcon" confirm-type="search" @input="searchIcon" />
+				<text class="duIcon-search"></text>
+				<input class="search-input" type="text" placeholder="搜索duIcon" confirm-type="search" @input="searchIcon" />
 			</view>
 		</view>
-		<view class="cu-list">
-      <view v-show="item.isShow" class="cu-item" v-for="(item,index) in cuIcon" :key="index">
+		<view class="du-list">
+      <view v-show="item.isShow" class="du-item" v-for="(item,index) in duIcon" :key="index">
         <text class="lg text-gray" :class="'cuIcon-' + item.name"></text>
         <text class="text-gray">{{item.name}}</text>
       </view>
@@ -21,8 +21,8 @@
     name: 'styleIcon',
 		data() {
 			return {
-				CustomBar: this.CustomBar,
-				cuIcon: [
+				dustomBar: this.dustomBar,
+				duIcon: [
           {
             name: 'appreciate',
             isShow: true
@@ -501,7 +501,7 @@
             name: 'cameraadd',
             isShow: true
           }, {
-            name: 'focus',
+            name: 'fodus',
             isShow: true
           }, {
             name: 'friendfill',
@@ -591,7 +591,7 @@
             name: 'calendar',
             isShow: true
           }, {
-            name: 'cut',
+            name: 'dut',
             isShow: true
           }, {
             name: 'magic',
@@ -903,7 +903,7 @@
             name: 'dianhua',
             isShow: true
           }, {
-            name: 'cuIcon',
+            name: 'duIcon',
             isShow: true
           }, {
             name: 'loading2',
@@ -918,7 +918,7 @@
 		methods: {
 			searchIcon(e) {
 				let key = e.detail.value.toLowerCase();
-				let list = this.cuIcon;
+				let list = this.duIcon;
 				for (let i = 0; i < list.length; i++) {
 					let a = key;
 					let b = list[i].name.toLowerCase();
@@ -928,7 +928,7 @@
 						list[i].isShow = false
 					}
         }
-				this.cuIcon = list
+				this.duIcon = list
 			}
 		}
 	}
@@ -937,46 +937,48 @@
 <style lang="scss" scoped>
 .style-icon {
   width: 100%;
-  .cu-bar {
+  .du-bar {
     width: 100%;
-    z-index: 1024;
-    height: 50px;
-    box-shadow: 0 0.5px 3px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    height: 100upx;
+    box-shadow: 0 1upx 6upx rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     color: #666666;
     align-items: center;
-    min-height: 50px;
+    min-height: 100upx;
     display: flex;
+    position: fixed;
     .search-form {
       background-color: #f5f5f5;
-      line-height: 32px;
-      height: 32px;
-      font-size: 12px;
+      line-height: 64upx;
+      height: 64upx;
+      font-size: 24upx;
       color: #333333;
       flex: 1;
       display: flex;
       align-items: center;
-      margin: 0 15px;
-      border-radius: 2500px;
-      .cuIcon-search {
+      margin: 0 30upx;
+      border-radius: 200px;
+      .duIcon-search {
         margin: 0 0.5em 0 0.8em;
       }
       .search-input {
         flex: 1;
-        padding-right: 15px;
-        height: 32px;
-        line-height: 32px;
-        font-size: 13px;
+        padding-right: 30upx;
+        height: 64upx;
+        line-height: 64upx;
+        font-size: 26upx;
         background-color: transparent;
       }
     }
   }
-  .cu-list {
+  .du-list {
     background: #fff;
     display: flex;
     flex-wrap: wrap;
     overflow-x: hidden;
-    .cu-item {
+    padding-top: 100upx;
+    .du-item {
       width: 33.3%;
       height: 160upx;
       display: flex;
@@ -992,8 +994,8 @@
         box-sizing: border-box;
         width: 200%;
         height: 200%;
-        border-right: 1px solid rgba(0, 0, 0, .1);
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        border-right: 2upx solid rgba(0, 0, 0, .1);
+        border-bottom: 2upx solid rgba(0, 0, 0, .1);
         border-radius: inherit;
         content: " ";
         -webkit-transform: scale(.5);
