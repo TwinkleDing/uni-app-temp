@@ -1,7 +1,7 @@
 <template>
-	<view class="index">
+	<view class="picture-detail">
 		<uni-nav-bar 
-				background-color='#000'
+				background-color='#ff80ab'
 				color='#fff'
 				:shadow='false'
 				:border='false'
@@ -269,7 +269,6 @@
 
 <style>
 	page {
-		background-color: #000;
 		height: 100%;
 	}
 

@@ -2,14 +2,14 @@
 	<view class="style-icon">
 		<view class="du-bar" :style="[{top:dustomBar + 'px'}]">
 			<view class="search-form round">
-				<text class="duIcon-search"></text>
+				<text class="cuIcon-search"></text>
 				<input class="search-input" type="text" placeholder="搜索duIcon" confirm-type="search" @input="searchIcon" />
 			</view>
 		</view>
 		<view class="du-list">
-      <view v-show="item.isShow" class="du-item" v-for="(item,index) in duIcon" :key="index">
-        <text class="lg text-gray" :class="'cuIcon-' + item.name"></text>
-        <text class="text-gray">{{item.name}}</text>
+      <view v-show="item.isShow" @click="clIcon(index)" class="du-item" v-for="(item,index) in duIcon" :key="index">
+        <text class="lg text-gray" :class="['cuIcon-' + item.name, active === index ? 'active' : '']"></text>
+        <text class="text-gray" :class="active === index ? 'active' : ''">{{item.name}}</text> 
       </view>
 		</view>
 	</view>
@@ -21,7 +21,8 @@
     name: 'styleIcon',
 		data() {
 			return {
-				dustomBar: this.dustomBar,
+        dustomBar: this.dustomBar,
+        active: -1,
 				duIcon: [
           {
             name: 'appreciate',
@@ -928,8 +929,12 @@
 						list[i].isShow = false
 					}
         }
+        this.active = -1
 				this.duIcon = list
-			}
+      },
+      clIcon(index) {
+        this.active = index
+      }
 		}
 	}
 </script>
@@ -959,7 +964,7 @@
       align-items: center;
       margin: 0 30upx;
       border-radius: 200px;
-      .duIcon-search {
+      .cuIcon-search {
         margin: 0 0.5em 0 0.8em;
       }
       .search-input {
@@ -1013,6 +1018,9 @@
         color: #aaa;
       }
     }
+  }
+  .active{
+    color: #ff80ab!important;
   }
 }
 </style>

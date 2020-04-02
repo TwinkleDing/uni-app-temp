@@ -38,6 +38,8 @@
   import service from '@/service.ts';
   import {showToast1, showToast2} from '@/util/index';
   import sliderVerify from '@/components/slider-verify/slider-verify.vue';
+  import "@/style/login.css";
+  
   export default {
     components: {
       mInput,

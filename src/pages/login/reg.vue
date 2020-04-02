@@ -24,6 +24,7 @@
   import Vue from 'vue';
 	import service from '@/service.ts';
 	import mInput from '@/components/m-input.vue';
+	import "@/style/login.css";
 
 	export default Vue.extend({
 		components: {
