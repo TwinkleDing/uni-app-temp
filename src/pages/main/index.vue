@@ -1,11 +1,7 @@
 <template>
 	<view class="main">
 		<uni-nav-barss 
-				background-color='#ff80ab'
-				color='#fff'
 				title='首页'
-				:shadow='false'
-				:border='false'
 		/>
 		<view class="content">
 			<swipers :list='list' />

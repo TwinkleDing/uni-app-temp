@@ -1,12 +1,8 @@
 <template>
 	<view class="pwd">
 		<uni-nav-bar 
-				background-color='#ff80ab'
-				color='#fff'
 				left-icon="back"
 				title='忘记密码'
-				:shadow='false'
-				:border='false'
 				@clickLeft='goBack'
 		/>
 		<view class="content">

@@ -1,12 +1,8 @@
 <template>
 	<view class="reg">
 		<uni-nav-bar 
-				background-color='#ff80ab'
-				color='#fff'
 				title='注册'
 				left-icon="back"
-				:shadow='false'
-				:border='false'
 				@clickLeft='goBack'
 		/>
 		<view class="content">

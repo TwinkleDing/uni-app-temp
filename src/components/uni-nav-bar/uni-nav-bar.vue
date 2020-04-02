@@ -76,11 +76,11 @@
 			},
 			color: {
 				type: String,
-				default: "#000000"
+				default: "#fff"
 			},
 			backgroundColor: {
 				type: String,
-				default: "#FFFFFF"
+				default: "#ff80ab"
 			},
 			statusBar: {
 				type: [Boolean, String],
@@ -92,7 +92,7 @@
 			},
 			border: {
 				type: [String, Boolean],
-				default: true
+				default: false
 			}
 		},
         mounted() {

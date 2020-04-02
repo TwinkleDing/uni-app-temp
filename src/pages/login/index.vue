@@ -1,10 +1,6 @@
 <template>
 	<view class="login">
 		<uni-nav-bar 
-				background-color='#ff80ab'
-				color='#fff'
-				:shadow='false'
-				:border='false'
 				title='登录'
 		/>
     <view class="content">

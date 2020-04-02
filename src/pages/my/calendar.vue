@@ -1,12 +1,8 @@
 <template>
   <view>
     <uni-nav-bar
-        background-color='#ff80ab'
-        color='#fff'
         title='我的收藏'
         left-icon="back"
-        :shadow='false'
-        :border='false'
         :fixed='true'
         @clickLeft='goBack'
     />

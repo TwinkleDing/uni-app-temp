@@ -1,14 +1,10 @@
 <template>
   <view>
 		<uni-nav-bar
-				background-color='#ff80ab'
-				color='#fff'
-				title='我的卡券'
-				left-icon="back"
-				:shadow='false'
-				:border='false'
-				:fixed='true'
-				@clickLeft='goBack'
+      title='我的卡券'
+      left-icon="back"
+      :fixed='true'
+      @clickLeft='goBack'
 		/>
     <view >
       <hm-balance-card :options="options"></hm-balance-card>

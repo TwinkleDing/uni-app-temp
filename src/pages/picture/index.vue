@@ -1,11 +1,7 @@
 <template>
 	<view class="index">
 		<uni-nav-bar
-				background-color='#ff80ab'
-				color='#fff'
-				title='图片'
-				:shadow='false'
-				:border='false'
+			title='图片'
 		/>
 		<view class="grid">
 			<view class="grid-c-06" v-for="item in lists" :key="item.guid">

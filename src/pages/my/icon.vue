@@ -1,14 +1,10 @@
 <template>
   <view class="style-icon">
     <uni-nav-bar
-        background-color='#ff80ab'
-        color='#fff'
-        title='我的收藏'
-        left-icon="back"
-        :shadow='false'
-        :border='false'
-        :fixed='true'
-        @clickLeft='goBack'
+      title='我的收藏'
+      left-icon="back"
+      :fixed='true'
+      @clickLeft='goBack'
     />
     <view>
       <view class="du-bar" :style="[{top:dustomBar + 'px'}]">

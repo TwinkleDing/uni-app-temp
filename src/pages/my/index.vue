@@ -1,12 +1,8 @@
 <template>
 	<view class='my'>
 		<uni-nav-bar
-				background-color='#ff80ab'
-				color='#fff'
-				title='我的'
-				:shadow='false'
-				:border='false'
-				:fixed='true'
+			title='我的'
+			:fixed='true'
 		/>
 		<view class="center">
 			<view class="logo" @click="bindLogin" :hover-class="!login ? 'logo-hover' : ''">

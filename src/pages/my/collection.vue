@@ -1,14 +1,10 @@
 <template>
 	<view>
 		<uni-nav-bar
-				background-color='#ff80ab'
-				color='#fff'
-				title='我的收藏'
-				left-icon="back"
-				:shadow='false'
-				:border='false'
-				:fixed='true'
-				@clickLeft='goBack'
+			title='我的收藏'
+			left-icon="back"
+			:fixed='true'
+			@clickLeft='goBack'
 		/>
 		<view v-if="collections.length" class="index">
 			<swiper @change="swpierChange" :style="{height:screenHeight + 'px'}">

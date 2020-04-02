@@ -1,14 +1,10 @@
 <template>
 	<view>
 		<uni-nav-bar
-				background-color='#ff80ab'
-				color='#fff'
-				title='模态窗'
-				left-icon="back"
-				:shadow='false'
-				:border='false'
-				:fixed='true'
-				@clickLeft='goBack'
+			title='模态窗'
+			left-icon="back"
+			:fixed='true'
+			@clickLeft='goBack'
 		/>
 		<view class='modal'>
 			<view class="du-bar bg-white margin-top">
