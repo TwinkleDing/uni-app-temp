@@ -77,6 +77,12 @@
 			}
 		},
 		{
+			"path": "pages/my/icon",
+			"style": {
+				"navigationBarTitleText": "图标"
+			}
+		},
+		{
 			"path": "pages/style/index",
 			"style": {
 				"navigationBarTitleText": "样式"
