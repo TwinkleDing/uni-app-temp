@@ -40,9 +40,9 @@
 		},
 		data() {
 			return {
-				account: '',
-				password: '',
-				email: ''
+				account: 'admin',
+				password: 'admin',
+				email: 'admin@123.com'
 			}
 		},
 		methods: {

@@ -1,7 +1,8 @@
 <template>
-	<view class="index">
+	<view class="picture-index">
 		<uni-nav-bar
 			title='图片'
+			:fixed='false'
 		/>
 		<view class="grid">
 			<view class="grid-c-06" v-for="item in lists" :key="item.guid">

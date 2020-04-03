@@ -72,7 +72,7 @@
 			},
 			fixed: {
 				type: [Boolean, String],
-				default: false
+				default: true
 			},
 			color: {
 				type: String,
@@ -84,7 +84,7 @@
 			},
 			statusBar: {
 				type: [Boolean, String],
-				default: false
+				default: true
 			},
 			shadow: {
 				type: [String, Boolean],
@@ -134,6 +134,7 @@
 		width: 750rpx;
 		background-color: $uni-bg-color;
 		overflow: hidden;
+		padding-top: var(--status-bar-height);
 	}
 
 	.uni-navbar__content_view {
