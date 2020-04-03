@@ -127,6 +127,7 @@
 
 	.uni-navbar {
 		width: 750rpx;
+		padding-top: var(--status-bar-height);
 	}
 
 	.uni-navbar__content {
@@ -134,7 +135,6 @@
 		width: 750rpx;
 		background-color: $uni-bg-color;
 		overflow: hidden;
-		padding-top: var(--status-bar-height);
 	}
 
 	.uni-navbar__content_view {

@@ -1,5 +1,5 @@
 <template>
-	<view >
+	<view class="address-book">
 		<uni-nav-bar
 				title='通讯录'
 				left-icon="back"
@@ -142,6 +142,9 @@
 </script>
 
 <style lang="scss" scoped>
+	.address-book{
+
+	}
   .uni-scroll-view{
     position: relative;
     width: 100%;
