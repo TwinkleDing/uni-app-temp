@@ -45,7 +45,6 @@
   import mInput from '@/components/m-input.vue';
   import sliderVerify from '@/components/slider-verify/slider-verify.vue';
   import {showToast1, showToast2} from '@/util/index';
-  import "@/style/login.css";
   
   export default {
     components: {
@@ -227,6 +226,7 @@
 </script>
 
 <style>
+  @import "@/style/login.css";
   .action-row {
 		display: flex;
 		flex-direction: row;

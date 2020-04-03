@@ -1,5 +1,4 @@
 <script lang="ts">
-	import "@/style/main.scss";
 	import Vue from 'vue';
 	export default Vue.extend({
 		mpType: 'app',
@@ -17,4 +16,5 @@
 
 <style>
 	@import "components/m-icon/m-icon.css";
+	@import "@/style/main.scss";
 </style>

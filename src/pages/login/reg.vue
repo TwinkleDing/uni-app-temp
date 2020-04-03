@@ -31,7 +31,6 @@
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
 	import mInput from '@/components/m-input.vue';
 	import service from '@/service.ts';
-	import "@/style/login.css";
 
 	export default{
 		components: {
@@ -94,5 +93,6 @@
 </script>
 
 <style>
+	@import "@/style/login.css";
 
 </style>

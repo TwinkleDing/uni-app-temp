@@ -24,7 +24,6 @@
 
 <script>
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
-	import "@/style/icon.css";
 	export default {
     name: 'styleIcon',
 		components: {
@@ -954,6 +953,7 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/style/icon.css";
 .style-icon {
   width: 100%;
   .du-bar {

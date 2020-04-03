@@ -12,9 +12,6 @@
 			<view class='tab-content'>
 				<view v-if="tabIndex === 0" >
 					<uCharts :option='chartsOption' :width='375' :height='250' />
-					<uCharts :option='chartsOption' :width='375' :height='250' />
-					<uCharts :option='chartsOption' :width='375' :height='250' />
-					<uCharts :option='chartsOption' :width='375' :height='250' />
 				</view>
 				<view v-if="tabIndex === 1" >
 					<collapse />
@@ -22,7 +19,9 @@
 				<view v-if="tabIndex === 2" >
 					<goods />
 				</view>
-				<view v-if="tabIndex === 3" >3</view>
+				<view v-if="tabIndex === 3" >
+					<grid />
+				</view>
 				<view v-if="tabIndex === 4" >4</view>
 				<view v-if="tabIndex === 5" >5</view>
 				<view v-if="tabIndex === 6" >6</view>
@@ -40,17 +39,19 @@
 	import uCharts from '@/components/u-charts/index.vue';
 	import collapse from './collapse.vue';
 	import goods from './goods.vue';
+	import grid from './grid.vue';
 	export default{
 		name: 'Mains',
 		components: {
 			uniNavBarss,
 			uCharts,
 			collapse,
-			goods
+			goods,
+			grid
 		},
 		data() {
 			return {
-				tabIndex: 1,
+				tabIndex: 3,
 				scrollInto: "",
 				tabBars: [
 					{
@@ -63,8 +64,8 @@
 							name: '购物',
 							id: 'goods'
 					}, {
-							name: '热点',
-							id: 'redian'
+							name: 'grid',
+							id: 'grid'
 					}, {
 							name: '财经',
 							id: 'caijing'
@@ -173,13 +174,15 @@
 .main {
 	height: calc(100vh - 50px);
 	.scroll-h {
-		width: 750rpx;
+		width: 100%;
 		height: 80rpx;
 		box-sizing: border-box;
 		flex-direction: row;
+		/* #ifndef APP-PLUS */
 		white-space: nowrap;
-		flex-wrap: nowrap;
-		border-bottom: 1px solid #cccccc;
+		/* #endif */
+		/* flex-wrap: nowrap; */
+		border-bottom: 1px solid #ccc;
 		.uni-tab-item {
 			/* #ifndef APP-PLUS */
 			display: inline-block;

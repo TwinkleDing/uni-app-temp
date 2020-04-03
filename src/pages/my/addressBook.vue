@@ -45,7 +45,6 @@
 <script>
   import mInput from '@/components/m-input.vue';
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
-  import "@/style/login.css";
 	export default {
     components: {
       mInput,
@@ -141,6 +140,7 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "@/style/login.css";
 	.address-book{
 
 	}
