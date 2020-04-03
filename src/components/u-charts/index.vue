@@ -86,15 +86,11 @@
 					yAxis: {
 						format: _self.option.yAxis.format || (val => val)
 					},
-					dataLabel: true,
+					dataLabel: _self.option.true,
+					dataPointShape:false,
 					width: _self.width*_self.pixelRatio,
 					height: _self.height*_self.pixelRatio,
-					extra: {
-						column: {
-							type:'group',
-							width: _self.width*_self.pixelRatio*0.45/_self.option.categories.length
-						}
-					  }
+					extra: _self.option.extra
 				});
 			},
 			touchIt(e,id) {
@@ -115,10 +111,10 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	page {
 		background: #F2F2F2;
-		width: 750rpx;
+		width: 100vw;
 		overflow-x: hidden;
 	}
 

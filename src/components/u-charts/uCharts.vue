@@ -1088,7 +1088,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	page {
 		background: #F2F2F2;
 		width: 750rpx;

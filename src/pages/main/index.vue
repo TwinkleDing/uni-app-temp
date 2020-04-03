@@ -9,12 +9,19 @@
 					<text class="uni-tab-item-title" :class="tabIndex==index ? 'uni-tab-item-title-active' : ''">{{tab.name}}</text>
 				</view>
 			</scroll-view>
-			<view >
+			<view class='tab-content'>
 				<view v-if="tabIndex === 0" >
 					<uCharts :option='chartsOption' :width='375' :height='250' />
+					<uCharts :option='chartsOption' :width='375' :height='250' />
+					<uCharts :option='chartsOption' :width='375' :height='250' />
+					<uCharts :option='chartsOption' :width='375' :height='250' />
 				</view>
-				<view v-if="tabIndex === 1" >1</view>
-				<view v-if="tabIndex === 2" >2</view>
+				<view v-if="tabIndex === 1" >
+					<collapse />
+				</view>
+				<view v-if="tabIndex === 2" >
+					<goods />
+				</view>
 				<view v-if="tabIndex === 3" >3</view>
 				<view v-if="tabIndex === 4" >4</view>
 				<view v-if="tabIndex === 5" >5</view>
@@ -31,26 +38,30 @@
 	import {mapGetters, mapMutations} from 'vuex';
 	import uniNavBarss from "@/components/uni-nav-bar/uni-nav-bar.vue";
 	import uCharts from '@/components/u-charts/index.vue';
+	import collapse from './collapse.vue';
+	import goods from './goods.vue';
 	export default{
 		name: 'Mains',
 		components: {
 			uniNavBarss,
-			uCharts
+			uCharts,
+			collapse,
+			goods
 		},
 		data() {
 			return {
-				tabIndex: 0,
+				tabIndex: 1,
 				scrollInto: "",
 				tabBars: [
 					{
 							name: '图表',
 							id: 'tubiao'
 					}, {
-							name: '推荐',
-							id: 'tuijian'
+							name: '折叠面板',
+							id: 'collapse'
 					}, {
-							name: '体育',
-							id: 'tiyu'
+							name: '购物',
+							id: 'goods'
 					}, {
 							name: '热点',
 							id: 'redian'
@@ -73,6 +84,7 @@
 				],
 				chartsOption: {
 					type: 'column',
+					tips: '',
 					fontSize: 11,
 					animation: false,
 					legend: {
@@ -81,16 +93,21 @@
 						lineHeight:11,
 						margin:0,
 					},
-					categories: [],
-					series: [],
 					yAxis: {
 						format: ''
 					},
 					xAxis: {
 						disableGrid: true,
 					},
-					tips: ''
-				}
+					categories: [],
+					series: [],
+					extra: {
+						column: {
+							type:'group',
+							width: 20
+						}
+					}
+				},
 			}
 		},
 		created() {
@@ -147,6 +164,7 @@
 				this.chartsOption.categories = data.Column.categories;
 				this.chartsOption.series = data.Column.series;
 			},
+			change(e) {}
 		}
 	};
 </script>
@@ -157,15 +175,11 @@
 	.scroll-h {
 		width: 750rpx;
 		height: 80rpx;
+		box-sizing: border-box;
 		flex-direction: row;
-		/* #ifndef APP-PLUS */
 		white-space: nowrap;
-		/* #endif */
-		/* flex-wrap: nowrap; */
-		/* border-color: #cccccc;
-		border-bottom-style: solid;
-		border-bottom-width: 1px; */
-		box-shadow: 1px 1px #999;
+		flex-wrap: nowrap;
+		border-bottom: 1px solid #cccccc;
 		.uni-tab-item {
 			/* #ifndef APP-PLUS */
 			display: inline-block;
@@ -190,6 +204,11 @@
 		}
 	}
 	.content {
+		.tab-content{
+			height: 100%;
+			overflow: hidden;
+			overflow-y: auto;
+		}
 	}
 }
 
