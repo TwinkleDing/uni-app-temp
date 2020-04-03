@@ -1,9 +1,8 @@
 <template>
-  <view>
+  <view class='card'>
 		<uni-nav-bar
       title='我的卡券'
       left-icon="back"
-      :fixed='true'
       @clickLeft='goBack'
 		/>
     <view >

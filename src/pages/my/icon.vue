@@ -3,7 +3,6 @@
     <uni-nav-bar
       title='Icon'
       left-icon="back"
-      :fixed='true'
       @clickLeft='goBack'
     />
     <view>

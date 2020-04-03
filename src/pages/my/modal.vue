@@ -1,12 +1,11 @@
 <template>
-	<view>
+	<view class='modal'>
 		<uni-nav-bar
 			title='模态窗'
 			left-icon="back"
-			:fixed='true'
 			@clickLeft='goBack'
 		/>
-		<view class='modal'>
+		<view>
 			<view class="du-bar bg-white margin-top">
 				<view class="action">
 					<text class="duIcon-title text-orange "></text> 普通窗口
@@ -263,7 +262,6 @@
 			},
 			showModal(e) {
         this.modalName = e.currentTarget.dataset.target
-        console.log(this.modalName)
 			},
 			hideModal(e) {
 				this.modalName = null
@@ -411,6 +409,19 @@
       .justify-end {
         justify-content: flex-end;
       }
+			.menu {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: flex-start;
+				.arrow{
+					width: 100%;
+					height:40upx;
+					padding: 20upx;
+					border-bottom: 1px solid #f37b1d;
+					color: #ff80ab;
+				}
+			}
     }
   }
   .show {
@@ -487,19 +498,6 @@
 }
 .justify-end {
   justify-content: flex-end;
-}
-.menu {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
-	.arrow{
-		width: 100%;
-		height:40upx;
-		padding: 20upx;
-		border-bottom: 1px solid #f37b1d;
-		color: #ff80ab;
-	}
 }
 
 .du-modal.drawer-modal.justify-start .du-dialog {

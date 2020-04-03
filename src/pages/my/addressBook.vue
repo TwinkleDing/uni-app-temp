@@ -3,7 +3,6 @@
 		<uni-nav-bar
 				title='通讯录'
 				left-icon="back"
-				:fixed='true'
 				@clickLeft='goBack'
 		/>
 		<view class="uni-scroll-view">

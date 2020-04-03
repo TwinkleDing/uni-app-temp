@@ -1,10 +1,6 @@
 <template>
 	<view class="picture-detail">
 		<uni-nav-bar 
-				background-color='#ff80ab'
-				color='#fff'
-				:shadow='false'
-				:border='false'
 				left-icon="back" 
 				@clickLeft='goBack'
 				@clickRight='collect'

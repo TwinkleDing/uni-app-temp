@@ -18,7 +18,7 @@ page {
   flex: 1;
   flex-direction: column;
   background-color: #efeff4;
-  padding: 10px;
   width: 100vw;
+  height: calc(100% - 44px);
   box-sizing: border-box;
 }

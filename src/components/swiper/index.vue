@@ -10,7 +10,7 @@
       :duration="duration">
         <swiper-item :key="key" v-for="(item, key) in list">
             <view class="swiper-item">
-              <img :src="item.img" />
+              <image class='img' :src="item.img" mode="widthFix"></image>
             </view>
         </swiper-item>
     </swiper>
@@ -44,7 +44,7 @@ export default {
   .swiper{
     width: 100%;
     .swiper-item{
-      img{
+      .img{
         height: 100%;
         width: 100%;
       }

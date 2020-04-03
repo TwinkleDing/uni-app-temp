@@ -1,9 +1,8 @@
 <template>
-	<view>
+	<view class='collection'>
 		<uni-nav-bar
 			title='我的收藏'
 			left-icon="back"
-			:fixed='true'
 			@clickLeft='goBack'
 		/>
 		<view v-if="collections.length" class="index">

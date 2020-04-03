@@ -1,61 +1,104 @@
 <template>
 	<view class="main">
 		<uni-nav-barss 
-				title='首页'
+			title='首页'
 		/>
-		<view class="content">
-			<swipers :list='list' />
-			<view v-if="hasLogin" class="hello">
-				<view class="title">
-					您好 {{userName}}，您已成功登录。
+		<view class='content'>
+			<scroll-view id="tab-bar" class="scroll-h" :scroll-x="true" :show-scrollbar="false" :scroll-into-view="scrollInto">
+				<view v-for="(tab,index) in tabBars" :key="tab.id" class="uni-tab-item" :id="tab.id" :data-current="index" @click="ontabtap">
+					<text class="uni-tab-item-title" :class="tabIndex==index ? 'uni-tab-item-title-active' : ''">{{tab.name}}</text>
 				</view>
-			</view>
-			<view v-if="!hasLogin" class="hello">
-				<view class="title">
-					您好 游客。
+			</scroll-view>
+			<view >
+				<view v-if="tabIndex === 0" >
+					<uCharts :option='chartsOption' :width='375' :height='250' />
 				</view>
+				<view v-if="tabIndex === 1" >1</view>
+				<view v-if="tabIndex === 2" >2</view>
+				<view v-if="tabIndex === 3" >3</view>
+				<view v-if="tabIndex === 4" >4</view>
+				<view v-if="tabIndex === 5" >5</view>
+				<view v-if="tabIndex === 6" >6</view>
+				<view v-if="tabIndex === 7" >7</view>
+				<view v-if="tabIndex === 8" >8</view>
+				<view v-if="tabIndex === 9" >9</view>
 			</view>
-			<detail />
 		</view>
 	</view>
 </template>
 
-<script lang='ts'>
-	import Vue from 'vue';
+<script>
 	import {mapGetters, mapMutations} from 'vuex';
 	import uniNavBarss from "@/components/uni-nav-bar/uni-nav-bar.vue";
-	import Detail from './detail.vue';
-	import Swipers from '@/components/swiper/index.vue';
-	export default Vue.extend({
+	import uCharts from '@/components/u-charts/index.vue';
+	export default{
 		name: 'Mains',
 		components: {
-			Detail,
-			Swipers,
-			uniNavBarss
+			uniNavBarss,
+			uCharts
 		},
 		data() {
 			return {
-				list: [
+				tabIndex: 0,
+				scrollInto: "",
+				tabBars: [
 					{
-						img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
+							name: '图表',
+							id: 'tubiao'
+					}, {
+							name: '推荐',
+							id: 'tuijian'
+					}, {
+							name: '体育',
+							id: 'tiyu'
+					}, {
+							name: '热点',
+							id: 'redian'
+					}, {
+							name: '财经',
+							id: 'caijing'
+					}, {
+							name: '娱乐',
+							id: 'yule'
+					}, {
+							name: '军事',
+							id: 'junshi'
+					}, {
+							name: '历史',
+							id: 'lishi'
+					}, {
+							name: '本地',
+							id: 'bendi'
+					}
+				],
+				chartsOption: {
+					type: 'column',
+					fontSize: 11,
+					animation: false,
+					legend: {
+						show:true,
+						padding:5,
+						lineHeight:11,
+						margin:0,
 					},
-					{
-						img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big37006.jpg'
+					categories: [],
+					series: [],
+					yAxis: {
+						format: ''
 					},
-					{
-						img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
+					xAxis: {
+						disableGrid: true,
 					},
-					{
-						img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-					},
-				]
+					tips: ''
+				}
 			}
 		},
-		onLoad() {
+		created() {
 			this.loginOr();
+			this.getServerData()
 		},
 		computed: {
-			...mapGetters(['forcedLogin', 'hasLogin', 'userName'])
+			...mapGetters(['forcedLogin', 'hasLogin'])
 		},
 		methods: {
 			loginOr() {
@@ -73,30 +116,81 @@
 						}
 					})
 				};
-			}
+			},
+			ontabtap(e) {
+				let index = e.target.dataset.current || e.currentTarget.dataset.current;
+				this.switchTab(index);
+			},
+			switchTab(index) {
+				this.tabIndex = Number(index)
+			},
+			getServerData() {
+				uni.showLoading({
+					title: "正在加载数据..."
+				})
+				uni.request({
+					url: 'https://unidemo.dcloud.net.cn/hello-uniapp-ucharts-data.json',
+					data: {},
+					success: (res) => {
+						this.fillData(res.data);
+					},
+					fail: () => {
+						this.option.tips = "网络错误，小程序端请检查合法域名";
+					},
+					complete() {
+						uni.hideLoading();
+					}
+				});
+			},
+			fillData(data) {
+				this.tips = data.tips;
+				this.chartsOption.categories = data.Column.categories;
+				this.chartsOption.series = data.Column.series;
+			},
 		}
-	});
+	};
 </script>
 
 <style lang="scss" scoped>
-	.hello {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
+.main {
+	height: calc(100vh - 50px);
+	.scroll-h {
+		width: 750rpx;
+		height: 80rpx;
+		flex-direction: row;
+		/* #ifndef APP-PLUS */
+		white-space: nowrap;
+		/* #endif */
+		/* flex-wrap: nowrap; */
+		/* border-color: #cccccc;
+		border-bottom-style: solid;
+		border-bottom-width: 1px; */
+		box-shadow: 1px 1px #999;
+		.uni-tab-item {
+			/* #ifndef APP-PLUS */
+			display: inline-block;
+			/* #endif */
+			flex-wrap: nowrap;
+			padding-left: 34rpx;
+			padding-right: 34rpx;
+			background: #eee;
+			&-title {
+				color: #555;
+				font-size: 30rpx;
+				height: 80rpx;
+				line-height: 80rpx;
+				flex-wrap: nowrap;
+				/* #ifndef APP-PLUS */
+				white-space: nowrap;
+				/* #endif */
+				&-active {
+						color: #007AFF;
+				}
+			}
+		}
 	}
+	.content {
+	}
+}
 
-	.title {
-		color: #8f8f94;
-		margin-top: 25px;
-	}
-
-	.ul {
-		font-size: 15px;
-		color: #8f8f94;
-		margin-top: 25px;
-	}
-
-	.ul>view {
-		line-height: 25px;
-	}
 </style>

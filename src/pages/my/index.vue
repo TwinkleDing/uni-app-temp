@@ -2,7 +2,6 @@
 	<view class='my'>
 		<uni-nav-bar
 			title='我的'
-			:fixed='true'
 		/>
 		<view class="center">
 			<view class="logo" @click="bindLogin" :hover-class="!login ? 'logo-hover' : ''">
@@ -47,32 +46,33 @@
 					<text class="list-text">日历信息</text>
 					<text class="navigat-arrow">&#xe65e;</text>
 				</view>
-				<view class="center-list-item">
+				<view class="center-list-item" @click="accountSet">
 					<text class="list-icon">&#xe609;</text>
 					<text class="list-text">账号管理</text>
 					<text class="navigat-arrow">&#xe65e;</text>
 				</view>
 			</view>
 		</view>
+		<account-set :showModal='showModal' @hideModal='hideModal' />
 	</view>
 </template>
 
 <script>
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
-	import {
-		mapGetters,
-		mapMutations
-	} from 'vuex'
+	import accountSet from './accountSet.vue'
+	import { mapGetters,	mapMutations } from 'vuex'
 	export default{
 		name: 'my',
 		components: {
-			uniNavBar
+			uniNavBar,
+			accountSet
 		},
 		data() {
 			return {
 				login: false,
 				avatarUrl: '/static/img/people.png',
-				uerInfo: {}
+				uerInfo: {},
+				showModal: false
 			}
 		},
 		computed: mapGetters(['hasLogin', 'forcedLogin', 'userName']),
@@ -123,6 +123,13 @@
 				uni.navigateTo({
 					url: './icon',
 				});
+			},
+			accountSet() {
+				this.showModal = true
+			},
+			hideModal() {
+				this.showModal = false
+				console.log(this.showModal)
 			}
 		}
 	}

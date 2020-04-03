@@ -1,12 +1,11 @@
 <template>
-  <view>
+  <view class='calendar'>
     <uni-nav-bar
         title='我的收藏'
         left-icon="back"
-        :fixed='true'
         @clickLeft='goBack'
     />
-    <view class='calendar'>
+    <view>
       <uni-calendar 
         :insert="true"
         :lunar="true" 
