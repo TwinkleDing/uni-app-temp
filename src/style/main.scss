@@ -22,3 +22,42 @@ page {
   height: calc(100% - 44px);
   box-sizing: border-box;
 }
+
+.example-body {
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  font-size: 14px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+.grid-item-box{
+  height: 100%;
+  widows: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.example-info {
+  padding: 15px;
+  color: #3b4144;
+  background: #ffffff;
+}
+.example-info-text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #3b4144;
+}
+
+.button {
+  border-color: #e5e5e5;
+  border-style: solid;
+  border-width: 1px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.button-text {
+  font-size: 15px;
+}

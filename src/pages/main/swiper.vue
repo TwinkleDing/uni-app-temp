@@ -1,16 +1,15 @@
 <template>
   <view class=style-index>
-    <!-- <swipers :list='list' /> -->
-		111
+    <swiperss :list='list' />
   </view>
 </template>
 
 <script>
-	import Swipers from '@/components/swiper/index.vue';
+	import Swiperss from '@/components/swiper/index.vue';
   export default {
     name: 'styleIndex',
     components: {
-			Swipers
+			Swiperss
     },
 		data() {
 			return {

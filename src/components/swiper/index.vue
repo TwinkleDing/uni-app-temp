@@ -7,6 +7,7 @@
       :interval="interval"
       :acceleration="true"
       :circular="true"
+      mode='round'
       :duration="duration">
         <swiper-item :key="key" v-for="(item, key) in list">
             <view class="swiper-item">
@@ -19,11 +20,13 @@
 
 <script>
 export default {
-  name: 'swiper',
+  name: 'swipers',
   props: {
     list: {
       type: Array,
-      default: []
+      default() {
+        return []
+      }
     }
   },
   data() {

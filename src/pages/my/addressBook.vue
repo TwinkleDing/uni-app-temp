@@ -5,12 +5,12 @@
 				left-icon="back"
 				@clickLeft='goBack'
 		/>
-		<view class="uni-scroll-view">
+		<view class="uni-scroll-view content">
 			<view class="input-row border">
 				<m-input class="m-input" type="text" clearable v-model="search" placeholder="输入搜索"></m-input>
 				<button class="btn">搜索</button>
 			</view>
-			<scroll-view scroll-y class="indexes" :scroll-into-view="'indexes-'+ listCurID" :style="[{height:'calc(100vh - '+ CustomBar + 'px - 50px)'}]"
+			<scroll-view scroll-y class="indexes" :scroll-into-view="'indexes-'+ listCurID" 
 										:scroll-with-animation="true" :enable-back-to-top="true">
 				<view style='padding-bottom:20px'>
 					<block v-for="(item,index) in list" :key="index">
@@ -31,7 +31,7 @@
 					</block>
 				</view>
 			</scroll-view>
-			<view class="indexBar" :style="[{height:'calc(100vh - ' + CustomBar + 'px - 50px)'}]">
+			<view class="indexBar" >
 				<view class="indexBar-box" @touchstart="tStart" @touchend="tEnd" @touchmove.stop="tMove">
 					<view class="indexBar-item" v-for="(item,index) in list" :key="index" :id="index" @touchstart="getCur" @touchend="setCur"> {{item.name}}</view>
 				</view>
@@ -55,7 +55,6 @@
 		data() {
 			return {
         search: '',
-				CustomBar: 40,
 				hidden: true,
 				listCurID: '',
 				list: [],
@@ -144,14 +143,22 @@
 <style lang="scss" scoped>
   @import "@/style/login.css";
 	.address-book{
-
+		height: 100vh;
 	}
   .uni-scroll-view{
     position: relative;
     width: 100%;
-    max-height: inherit;
-    background-color: #ffffff;
+		/* #ifdef APP-PLUS */
+		height: calc(100% - 44px - var(--status-bar-height));
+		/* #endif */
+		/* #ifdef H5 */
+		height: calc(100% - 44px);
+		/* #endif */
+		background-color: #ffffff;
+		overflow: hidden;
+		overflow-y: auto;
 		.indexes {
+    	height: calc(100% - 46px);
 			position: relative;
 			.padding{
 				color: #ff80ab;
@@ -179,9 +186,7 @@
 				border-bottom: 0.5px solid #ddd;
 				border-radius: inherit;
 				content: " ";
-				-webkit-transform: scale(.5);
 				transform: scale(.5);
-				-webkit-transform-origin: 0 0;
 				transform-origin: 0 0;
 				pointer-events: none;
 			}

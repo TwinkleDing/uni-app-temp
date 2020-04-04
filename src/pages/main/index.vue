@@ -25,11 +25,14 @@
 				<view v-if="tabIndex === 4" >
 					<swipers />
 				</view>
-				<view v-if="tabIndex === 5" >5</view>
-				<view v-if="tabIndex === 6" >6</view>
+				<view v-if="tabIndex === 5" >
+					<swiper-action />
+				</view>
+				<view v-if="tabIndex === 6" >
+					<steps />
+				</view>
 				<view v-if="tabIndex === 7" >7</view>
 				<view v-if="tabIndex === 8" >8</view>
-				<view v-if="tabIndex === 9" >9</view>
 			</view>
 		</view>
 	</view>
@@ -43,6 +46,8 @@
 	import goods from './goods.vue';
 	import grid from './grid.vue';
 	import swipers from './swiper.vue';
+	import swiperAction from './swiperAction.vue';
+	import steps from './steps.vue';
 	export default{
 		name: 'Mains',
 		components: {
@@ -51,11 +56,13 @@
 			collapse,
 			goods,
 			grid,
-			swipers
+			swipers,
+			swiperAction,
+			steps
 		},
 		data() {
 			return {
-				tabIndex: 3,
+				tabIndex: 0,
 				scrollInto: "",
 				tabBars: [
 					{
@@ -74,10 +81,10 @@
 							name: 'swiper',
 							id: 'swiper'
 					}, {
-							name: '娱乐',
-							id: 'yule'
+							name: '滑动操作',
+							id: 'swipe'
 					}, {
-							name: '军事',
+							name: '步骤条',
 							id: 'junshi'
 					}, {
 							name: '历史',
@@ -182,6 +189,13 @@
 	/* #ifdef H5 */
 	height: calc(100vh - 50px);
 	/* #endif */
+	.content {
+		.tab-content{
+			height: calc(100% - 43px);
+			overflow: hidden;
+			overflow-y: auto;
+		}
+	}
 	.scroll-h {
 		width: 100%;
 		height: 80rpx;
@@ -210,13 +224,6 @@
 						color: #007AFF;
 				}
 			}
-		}
-	}
-	.content {
-		.tab-content{
-			height: calc(100% - 43px);
-			overflow: hidden;
-			overflow-y: auto;
 		}
 	}
 }

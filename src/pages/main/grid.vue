@@ -103,21 +103,14 @@
 			},
 			del() {
 				this.dynamicList.splice(this.dynamicList.length - 1, 1)
+			},
+			change(e) {
+				console.log(e)
 			}
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  .example-body{
-    padding: 20px;
-    background: #fff;
-    .grid-item-box{
-      height: 100%;
-      widows: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
+  
 </style>
