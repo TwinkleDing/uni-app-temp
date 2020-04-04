@@ -37,7 +37,7 @@
 			}
 		},
 		onLoad(e) {
-			this.screenHeight = uni.getSystemInfoSync().windowHeight
+			this.screenHeight = uni.getSystemInfoSync().windowHeight - 44 - uni.getSystemInfoSync().statusBarHeight;
       this.data = this.data.concat(this.collections)
       this.imgLength = this.data.length
       uni.setNavigationBarTitle({

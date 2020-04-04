@@ -81,12 +81,6 @@
 			"style": {
 				"navigationBarTitleText": "图标"
 			}
-		},
-		{
-			"path": "pages/style/index",
-			"style": {
-				"navigationBarTitleText": "样式"
-			}
 		}
 	],
 	"globalStyle": {
@@ -109,11 +103,6 @@
 			"text": "看图",
 			"iconPath": "static/img/picture.png",
 			"selectedIconPath": "static/img/pictureHL.png"
-		}, {
-			"pagePath": "pages/style/index",
-			"text": "样式",
-			"iconPath": "static/img/tag-0.png",
-			"selectedIconPath": "static/img/tag-1.png"
 		}, {
 			"pagePath": "pages/my/index",
 			"text": "我的",

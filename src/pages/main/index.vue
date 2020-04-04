@@ -22,7 +22,9 @@
 				<view v-if="tabIndex === 3" >
 					<grid />
 				</view>
-				<view v-if="tabIndex === 4" >4</view>
+				<view v-if="tabIndex === 4" >
+					<swipers />
+				</view>
 				<view v-if="tabIndex === 5" >5</view>
 				<view v-if="tabIndex === 6" >6</view>
 				<view v-if="tabIndex === 7" >7</view>
@@ -40,6 +42,7 @@
 	import collapse from './collapse.vue';
 	import goods from './goods.vue';
 	import grid from './grid.vue';
+	import swipers from './swiper.vue';
 	export default{
 		name: 'Mains',
 		components: {
@@ -47,11 +50,12 @@
 			uCharts,
 			collapse,
 			goods,
-			grid
+			grid,
+			swipers
 		},
 		data() {
 			return {
-				tabIndex: 3,
+				tabIndex: 2,
 				scrollInto: "",
 				tabBars: [
 					{
@@ -67,8 +71,8 @@
 							name: 'grid',
 							id: 'grid'
 					}, {
-							name: '财经',
-							id: 'caijing'
+							name: 'swiper',
+							id: 'swiper'
 					}, {
 							name: '娱乐',
 							id: 'yule'
@@ -178,20 +182,17 @@
 		height: 80rpx;
 		box-sizing: border-box;
 		flex-direction: row;
-		/* #ifndef APP-PLUS */
 		white-space: nowrap;
-		/* #endif */
-		/* flex-wrap: nowrap; */
+		flex-wrap: nowrap;
 		border-bottom: 1px solid #ccc;
 		.uni-tab-item {
-			/* #ifndef APP-PLUS */
-			display: inline-block;
-			/* #endif */
 			flex-wrap: nowrap;
 			padding-left: 34rpx;
 			padding-right: 34rpx;
 			background: #eee;
+			display: inline-block;
 			&-title {
+				display: inline-block;
 				color: #555;
 				font-size: 30rpx;
 				height: 80rpx;

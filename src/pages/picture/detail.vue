@@ -41,7 +41,7 @@
 				this.showBtn = true;
 			}
 			// #endif
-			this.screenHeight = uni.getSystemInfoSync().windowHeight-44;
+			this.screenHeight = uni.getSystemInfoSync().windowHeight - 44 - uni.getSystemInfoSync().statusBarHeight;
 			this.detailDec = e.data;
 			let data = JSON.parse(decodeURIComponent(e.data));
 			this.imgLength = data.img_num;
