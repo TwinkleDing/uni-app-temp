@@ -2,13 +2,13 @@
   <view class="du-modal drawer-modal"
         :class="showModal ? 'show':''"
         @tap="hideModal">
-    <view class="du-dialog" @tap.stop=""
-          :style="[{top:CustomBar+'px', height:'calc(100vh - ' + CustomBar + 'px)'}]">
+    <view class="du-dialog" @tap.stop="stopTap">
       <view class="du-list menu">
         <view class="du-item arrow"
-              v-for="(item,index) in 5" :key="index">
+        @click="itemClick(item.url)"
+        v-for="(item,index) in menuList" :key="index">
           <view class="modal-content">
-            <view>Item {{index +1}}</view>
+            <view>{{item.label}}</view>
           </view>
         </view>
       </view>
@@ -27,14 +27,27 @@ export default {
   },
   data() {
     return {
-      CustomBar :0,
       modalName: null,
+      menuList: [
+        {
+          id: 0,
+          label: '退出登录',
+          url: '../login/index'
+        }
+      ]
     }
   },
   methods: {
     hideModal() {
-      console.log(1)
       this.$emit('hideModal')
+    },
+    stopTap() {
+      console.log(1)
+    },
+    itemClick(url) {
+      uni.reLaunch({
+        url
+      });
     }
   }
 }
@@ -43,8 +56,15 @@ export default {
 <style lang="scss" scoped>
     
   .du-modal {
+		/* #ifdef APP-PLUS */
+    height: calc(100vh -44px - var(--status-bar-height));
+    top: calc(44px + var(--status-bar-height));
+		/* #endif */
+		/* #ifdef H5 */
+		height: calc(100vh -44px);
+    top: 44px;
+		/* #endif */
     position: fixed;
-    top: 0;
     right: 0;
     bottom: 0;
     left: 0;

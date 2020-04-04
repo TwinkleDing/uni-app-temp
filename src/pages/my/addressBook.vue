@@ -143,17 +143,16 @@
 <style lang="scss" scoped>
   @import "@/style/login.css";
 	.address-book{
+		/* #ifdef APP-PLUS */
+		height: calc(100vh - var(--status-bar-height));
+		/* #endif */
+		/* #ifdef H5 */
 		height: 100vh;
+		/* #endif */
 	}
   .uni-scroll-view{
     position: relative;
     width: 100%;
-		/* #ifdef APP-PLUS */
-		height: calc(100% - 44px - var(--status-bar-height));
-		/* #endif */
-		/* #ifdef H5 */
-		height: calc(100% - 44px);
-		/* #endif */
 		background-color: #ffffff;
 		overflow: hidden;
 		overflow-y: auto;
@@ -234,7 +233,8 @@
     bottom: 0px;
 		padding: 20upx 20upx 20upx 60upx;
     display: flex;
-    align-items: center;
+		align-items: center;
+		top: 100px;
 		&-box {
 			width: 40upx;
 			height: auto;
