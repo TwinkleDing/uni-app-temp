@@ -44,7 +44,7 @@
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
   import mInput from '@/components/m-input.vue';
   import sliderVerify from '@/components/slider-verify/slider-verify.vue';
-  import {showToast1, showToast2} from '@/util/index';
+  import {showToasts} from '@/util/index';
   
   export default {
     components: {
@@ -109,7 +109,10 @@
          * 实际开发中，根据业务需要进行处理，这里仅做示例。
          */
         if (this.account.length < 5) {
-          showToast1({title:'账号最短为 5 个字符'});
+          uni.showToast({
+            icon: 'none',
+            title:'账号最短为 5 个字符'
+          });
           return;
         };
         if (this.password.length < 5) {
@@ -208,7 +211,7 @@
             }
           });
         }else{
-          showToast2('验证失败，请重新验证');
+          showToasts('验证失败，请重新验证');
         }
       },
       closeSlider() {

@@ -1,15 +1,35 @@
-export const showToast1 = (showToastParams) => {
-  uni.showToast({
-    title: showToastParams.title,
-    icon: showToastParams.icon || 'none',
-    duration: showToastParams.duration
-  });
-};
-
-export const showToast2 = (title, duration, icon = 'none') => {
+export const showToasts = (title, duration, icon = 'none') => {
   uni.showToast({
     title: title,
     duration: duration,
     icon: icon
+  });
+};
+
+export const goTo = (url) => {
+  uni.navigateTo({
+    url: url,
+    animationType: 'pop-in',
+    animationDuration: '200'
+  });
+};
+
+export const goBack = (url) => {
+  uni.navigateBack({
+    url: url,
+    animationType: 'pop-out',
+    animationDuration: '200'
+  });
+};
+
+export const goRedirect = (url) => {
+  uni.redirectTo({
+    url: url
+  });
+};
+
+export const goRelaunch = (url) => {
+  uni.reLaunch({
+    url: url
   });
 };
