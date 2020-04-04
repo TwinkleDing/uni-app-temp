@@ -5,7 +5,7 @@ const picture = {
     hasCollection: false,
   },
   mutations: {
-    ADD_COLLECTION: (state:any, picture:string) => {
+    ADD_COLLECTION: (state, picture) => {
       state.collections.push(picture)
 			setStorage('collections', state.collections);
       uni.showToast({
@@ -13,15 +13,15 @@ const picture = {
         title: '已收藏'
       })
     },
-    CHECK_COLLECTION: (state:any, picture:string) => {
-      const a = state.collections.filter((item:any) => {
+    CHECK_COLLECTION: (state, picture) => {
+      const a = state.collections.filter((item) => {
         return item === picture
       })
       state.hasCollection = a.length > 0 ? true : false
     },
   },
   actions: {
-    removeCollection: ({state}:any, picture:string) => {
+    removeCollection: ({state}, picture) => {
       const index = state.collections.indexOf(picture)
       state.collections.splice(index, 1)
 			setStorage('collections', state.collections);

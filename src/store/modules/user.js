@@ -9,19 +9,13 @@ const user = {
 		userName: getStorage('userName') || ""
 	},
 	mutations: {
-		LOGIN: (state:{
-			userName:string,
-			hasLogin:boolean
-		}, userName:string)=> {
+		LOGIN: (state, userName)=> {
 			state.userName = userName || '新用户';
 			state.hasLogin = true;
 			setStorage('userName', state.userName);
 			setStorage('hasLogin', state.hasLogin);
 		},
-		LOGOUT: (state:{
-			userName:string,
-			hasLogin:boolean
-		})=> {
+		LOGOUT: (state)=> {
 			state.userName = "";
 			state.hasLogin = false;
 			removeStorage('userName');

@@ -1,4 +1,4 @@
-export const setStorage = (key:string, data:any, sync:boolean = false) => {
+export const setStorage = (key, data, sync = false) => {
   if (sync) {
     uni['setStorageSync'](key, data)
   } else {
@@ -6,7 +6,7 @@ export const setStorage = (key:string, data:any, sync:boolean = false) => {
   }
 };
 
-export const getStorage = (key:string, sync:boolean = true) => {
+export const getStorage = (key, sync = true) => {
   if (sync) {
     return uni['getStorageSync'](key)
   } else {
@@ -14,7 +14,7 @@ export const getStorage = (key:string, sync:boolean = true) => {
   }
 };
 
-export const removeStorage = (key:string, sync?:boolean) => {
+export const removeStorage = (key, sync) => {
   if (sync) {
     return uni['removeStorageSync'](key)
   } else {
@@ -22,7 +22,7 @@ export const removeStorage = (key:string, sync?:boolean) => {
   }
 };
 
-export const clearStorage = (sync:boolean = false) => {
+export const clearStorage = (sync = false) => {
   if (sync) {
     uni.clearStorageSync();
   } else {

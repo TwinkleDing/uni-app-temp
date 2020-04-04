@@ -31,7 +31,7 @@
 	import {mapGetters, mapMutations} from 'vuex';
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue";
 	import mInput from '@/components/m-input.vue';
-	import service from '@/service.ts';
+	import service from '@/service.js';
 	
 	export default{
 		components: {

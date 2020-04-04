@@ -11,7 +11,7 @@ const getUsers = function() {
 	return JSON.parse(ret);
 }
 
-const addUser = function(userInfo: object) {
+const addUser = function(userInfo) {
 	let users = getUsers();
 	users.push({...userInfo});
 	uni.setStorageSync(USERS_KEY, JSON.stringify(users));
