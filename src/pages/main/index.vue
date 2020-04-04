@@ -55,7 +55,7 @@
 		},
 		data() {
 			return {
-				tabIndex: 2,
+				tabIndex: 3,
 				scrollInto: "",
 				tabBars: [
 					{
@@ -176,7 +176,12 @@
 
 <style lang="scss" scoped>
 .main {
+	/* #ifdef APP-PLUS */
+	height: calc(100vh - var(--status-bar-height));
+	/* #endif */
+	/* #ifdef H5 */
 	height: calc(100vh - 50px);
+	/* #endif */
 	.scroll-h {
 		width: 100%;
 		height: 80rpx;
@@ -209,7 +214,7 @@
 	}
 	.content {
 		.tab-content{
-			height: 100%;
+			height: calc(100% - 43px);
 			overflow: hidden;
 			overflow-y: auto;
 		}

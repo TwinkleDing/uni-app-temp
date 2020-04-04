@@ -9,6 +9,13 @@
 					</view>
 				</uni-grid-item>
 			</uni-grid>
+			<uni-grid :column="3" :highlight="true" @change="change">
+				<uni-grid-item v-for="(item, index) in list" :index="index" :key="index">
+					<view class="grid-item-box">
+						<text class="text">{{ item.text }}</text>
+					</view>
+				</uni-grid-item>
+			</uni-grid>
 		</view>
 		<uni-section title="动态加载" type="line"></uni-section>
 		<view class="example-body">

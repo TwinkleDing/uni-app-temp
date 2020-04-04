@@ -79,13 +79,17 @@
     background-color: #ffffff;
   }
   .goods-carts {
+	background:red;
     display: flex;
     flex-direction: column;
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
-    padding-bottom: 50px;
+    padding-bottom: 0;
+	/* #ifdef  H5 */
+	padding-bottom: 50px;
+	/* #endif */
   }
 }
 
