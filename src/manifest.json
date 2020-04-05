@@ -15,7 +15,8 @@
             "delay" : 0
         },
         "modules" : {
-            "OAuth" : {}
+            "OAuth" : {},
+            "Fingerprint" : {}
         },
         /* 模块配置 */
         "distribute" : {
@@ -41,6 +42,7 @@
                     "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.USE_FINGERPRINT\"/>",
                     "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
                     "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
