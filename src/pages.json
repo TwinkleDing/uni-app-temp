@@ -81,6 +81,9 @@
 			"style": {
 				"navigationBarTitleText": "图标"
 			}
+		},
+		{
+			"path": "pages/and/index"
 		}
 	],
 	"globalStyle": {
@@ -103,6 +106,11 @@
 			"text": "看图",
 			"iconPath": "static/img/picture.png",
 			"selectedIconPath": "static/img/pictureHL.png"
+		}, {
+			"pagePath": "pages/and/index",
+			"text": "原生",
+			"iconPath": "static/img/tag-0.png",
+			"selectedIconPath": "static/img/tag-1.png"
 		}, {
 			"pagePath": "pages/my/index",
 			"text": "我的",
