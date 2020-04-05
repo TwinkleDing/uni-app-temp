@@ -6,6 +6,16 @@ const showToasts = (title, duration, icon = 'none') => {
   });
 };
 
+const showLoadings =() => {
+  uni.showLoading({
+    title,
+    mask
+  });
+  setTimeout(function () {
+    uni.hideLoading();
+}, 2000);
+};
+
 const goTo = (url) => {
   uni.navigateTo({
     url: url,
@@ -41,7 +51,8 @@ export default {
 			goTo,
 			goBack,
 			goRedirect,
-			goRelaunch
+      goRelaunch,
+      showLoadings
 		}
 	}
 }

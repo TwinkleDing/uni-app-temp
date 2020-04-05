@@ -31,8 +31,6 @@
 				<view v-if="tabIndex === 6" >
 					<steps />
 				</view>
-				<view v-if="tabIndex === 7" >7</view>
-				<view v-if="tabIndex === 8" >8</view>
 			</view>
 		</view>
 	</view>
@@ -86,12 +84,6 @@
 					}, {
 							name: '步骤条',
 							id: 'junshi'
-					}, {
-							name: '历史',
-							id: 'lishi'
-					}, {
-							name: '本地',
-							id: 'bendi'
 					}
 				],
 				chartsOption: {
