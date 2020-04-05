@@ -1,4 +1,4 @@
-export const showToasts = (title, duration, icon = 'none') => {
+const showToasts = (title, duration, icon = 'none') => {
   uni.showToast({
     title: title,
     duration: duration,
@@ -6,7 +6,7 @@ export const showToasts = (title, duration, icon = 'none') => {
   });
 };
 
-export const goTo = (url) => {
+const goTo = (url) => {
   uni.navigateTo({
     url: url,
     animationType: 'pop-in',
@@ -14,7 +14,7 @@ export const goTo = (url) => {
   });
 };
 
-export const goBack = (url) => {
+const goBack = (url) => {
   uni.navigateBack({
     url: url,
     animationType: 'pop-out',
@@ -22,14 +22,26 @@ export const goBack = (url) => {
   });
 };
 
-export const goRedirect = (url) => {
+const goRedirect = (url) => {
   uni.redirectTo({
     url: url
   });
 };
 
-export const goRelaunch = (url) => {
+const goRelaunch = (url) => {
   uni.reLaunch({
     url: url
   });
 };
+
+export default {
+	install: (Vue, options) => {
+		Vue.prototype.$util = {
+			showToasts,
+			goTo,
+			goBack,
+			goRedirect,
+			goRelaunch
+		}
+	}
+}
