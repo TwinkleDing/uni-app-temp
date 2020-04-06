@@ -45,3 +45,6 @@ API 的条件编译
 // #ifdef  %PLATFORM%
 平台特有的API实现
 // #endif
+
+
+npm i uni-app-diy 下载脚手架
