@@ -80,7 +80,7 @@
       };
     },
     created() {
-      // #ifdef APP-PLUS%
+      // #ifdef APP-PLUS
       this.getSCreenLight()
       // #endif
     },
