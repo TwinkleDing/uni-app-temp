@@ -5,7 +5,7 @@
     <view class="du-dialog" @tap.stop="stopTap">
       <view class="du-list menu">
         <view class="du-item arrow"
-        @click="itemClick(item.url)"
+        @click="itemClick(item)"
         v-for="(item,index) in menuList" :key="index">
           <view class="modal-content">
             <view>{{item.label}}</view>
@@ -13,44 +13,71 @@
         </view>
       </view>
     </view>
+    <uni-popup ref="showtip" type="center" :mask-click="false" @change="change">
+      <view class="uni-tip">
+        <text class="uni-tip-title">警告</text>
+        <text class="uni-tip-content">是否要退出登录？</text>
+        <view class="uni-tip-group-button">
+          <text class="uni-tip-button" @click="cancel()">取消</text>
+          <text class="uni-tip-button" @click="logoOut()">确定</text>
+        </view>
+      </view>
+    </uni-popup>
   </view>
 </template>
 
 <script>
-export default {
-  name: 'accountSet',
-  props: {
-    showModal: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      modalName: null,
-      menuList: [
-        {
-          id: 0,
-          label: '退出登录',
-          url: '../login/index'
+	import uniPopup from '@/components/uni-popup/uni-popup.vue'
+  export default {
+    name: 'accountSet',
+    props: {
+      showModal: {
+        type: Boolean,
+        default: false
+      }
+    },
+    components: {
+      uniPopup
+    },
+    data() {
+      return {
+        modalName: null,
+        menuList: [
+          {
+            id: 0,
+            label: '退出登录',
+            url: '../login/index'
+          }
+        ]
+      }
+    },
+    methods: {
+      hideModal() {
+        this.$emit('hideModal')
+      },
+      stopTap() {
+        console.log(1)
+      },
+      itemClick(item) {
+        if(item.id === 0) {
+          this.$nextTick(() => {
+            this.$refs['showtip'].open()
+          })
         }
-      ]
-    }
-  },
-  methods: {
-    hideModal() {
-      this.$emit('hideModal')
-    },
-    stopTap() {
-      console.log(1)
-    },
-    itemClick(url) {
-      uni.reLaunch({
-        url
-      });
+      },
+			change(e) {
+				console.log('是否打开:' + e.show)
+			},
+			cancel() {
+				this.$refs['showtip'].close()
+      },
+      logoOut() {
+        uni.reLaunch({
+          url: '../login/index'
+        });
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -132,4 +159,42 @@ export default {
       transform: translateX(0%);
     }
   }
+  /* 提示窗口 */
+	.uni-tip {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		flex-direction: column;
+		/* #endif */
+		padding: 15px;
+		width: 250px;
+		background-color: #fff;
+		border-radius: 10px;
+    &-title {
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+    &-content {
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+    }
+    &-group-button {
+      /* #ifndef APP-NVUE */
+      display: flex;
+      /* #endif */
+      flex-direction: row;
+      margin-top: 20px;
+    }
+    &-button {
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
+      color: #3b4144;
+    }
+	}
+
+
 </style>

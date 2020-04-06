@@ -19,7 +19,6 @@
 
 <script>
 	import uCharts from '@/components/u-charts/u-charts.js';
-	var _self;
 	var canvasObj = {};
 
 	export default {
@@ -55,42 +54,41 @@
 			}
 		},
 		mounted() {
-			_self = this;
 			setTimeout(()=>{
-				_self.show()
+				this.show()
 			},1)
 		},
 		watch: {
 			option: {
 				handler() {
-					_self.show()
+					this.show()
 				},
 				deep: true
 			},
 		},
 		methods: {
 			show() {
-				canvasObj[_self.id] = new uCharts({
-					$this:_self,
-					canvasId: _self.id,
-					type: _self.option.type || 'column',
+				canvasObj[this.id] = new uCharts({
+					$this:this,
+					canvasId: this.id,
+					type: this.option.type || 'column',
 					padding:[15,15,0,15],
-					legend: _self.option.lengend || _self.lengend,
-					fontSize: _self.option.fontSize || 11,
+					legend: this.option.lengend || this.lengend,
+					fontSize: this.option.fontSize || 11,
 					background:'#FFFFFF',
-					pixelRatio:_self.pixelRatio,
-					animation: _self.option.animation || false,
-					categories: _self.option.categories,
-					series: _self.option.series,
-					xAxis: _self.xAxis,
+					pixelRatio:this.pixelRatio,
+					animation: this.option.animation || false,
+					categories: this.option.categories,
+					series: this.option.series,
+					xAxis: this.xAxis,
 					yAxis: {
-						format: _self.option.yAxis.format || (val => val)
+						format: this.option.yAxis.format || (val => val)
 					},
-					dataLabel: _self.option.true,
+					dataLabel: this.option.true,
 					dataPointShape:false,
-					width: _self.width*_self.pixelRatio,
-					height: _self.height*_self.pixelRatio,
-					extra: _self.option.extra
+					width: this.width*this.pixelRatio,
+					height: this.height*this.pixelRatio,
+					extra: this.option.extra
 				});
 			},
 			touchIt(e,id) {

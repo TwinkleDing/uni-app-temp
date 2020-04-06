@@ -76,11 +76,13 @@
         network: {},
         scanCodeContent: {},
         clipboard: '',
-        screenLight: Number
+        screenLight: ''
       };
     },
     created() {
+      // #ifdef APP-PLUS%
       this.getSCreenLight()
+      // #endif
     },
     methods: {
       getCurrentLocation() {
@@ -141,14 +143,12 @@
         uni.getScreenBrightness({
           success: res => {
             this.screenLight = parseInt(res.value * 100)
-            console.log(res.value)
           }
         });
       },
       setScreenLight() {
       },
       sliderChange(e) {
-        console.log('value 发生变化：' + e.detail.value)
         this.screenLight =  e.detail.value
         uni.setScreenBrightness({
           value: this.screenLight / 100

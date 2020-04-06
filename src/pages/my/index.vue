@@ -79,9 +79,9 @@
 		methods: {
 			...mapMutations(['LOGOUT']),
 			bindLogin() {
-				uni.navigateTo({
-					url: '../login/index',
-				});
+				// uni.navigateTo({
+				// 	url: '../login/index',
+				// });
 			},
 			bindLogout() {
 				this.LOGOUT();
