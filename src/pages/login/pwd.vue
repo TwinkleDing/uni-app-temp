@@ -46,13 +46,11 @@
 			}
 		},
 		methods: {
+      ...mapMutations(['LOGIN']),
 			goBack() {
 				uni.navigateBack()
 			},
 			findPwd() {
-				console.log(this.email)
-				console.log(this.account)
-				console.log(this.password)
 				if (this.account.lenght < 5) {
 					uni.showToast({
 						icon: 'none',
@@ -83,7 +81,8 @@
 					return item.account === user.account && item.email === user.email;
 				})
 				if(validUser.length > 0) {
-					service.addUser(data);
+					service.addUser(user);
+					console.log(this)
 					this.toMain(user.account);
 				}else {
 					uni.showToast({
@@ -91,20 +90,20 @@
 						title: '账号和邮箱不统一'
 					});
 				}
-			}
-		},
-		toMain(userName) {
-			this.LOGIN(userName);
-			/**
-			 * 强制登录时使用reLaunch方式跳转过来
-			 * 返回首页也使用reLaunch方式
-			 */
-			if (this.forcedLogin) {
-				uni.reLaunch({
-					url: '../main/index',
-				});
-			} else {
-				uni.navigateBack();
+			},
+			toMain(userName) {
+				this.LOGIN(userName);
+				/**
+				 * 强制登录时使用reLaunch方式跳转过来
+				 * 返回首页也使用reLaunch方式
+				 */
+				if (this.forcedLogin) {
+					uni.reLaunch({
+						url: '../main/index',
+					});
+				} else {
+					uni.navigateBack();
+				}
 			}
 		}
 	}

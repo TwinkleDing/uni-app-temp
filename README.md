@@ -1,4 +1,6 @@
 # uni-app-diy
+基于uni-app的做的H5app，用hbuilder打包，兼容了原生的，只在android做了测试  
+包含了一些常用的app交互，还有一些原生方法，可以进行相关扩展
 
 ## Project setup
 ```
@@ -47,4 +49,4 @@ API 的条件编译
 // #endif
 
 
-npm i uni-app-diy 下载脚手架
+npm i uni-app-diy 下载脚手架(有问题)

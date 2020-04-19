@@ -485,6 +485,8 @@
 .du-modal.drawer-modal {
 	transform: scale(1);
   display: flex;
+	box-sizing: border-box;
+	padding-top: var(--status-bar-height);
   .du-dialog {
     height: 100%;
     min-width: 200upx;

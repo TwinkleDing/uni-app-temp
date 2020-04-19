@@ -84,12 +84,14 @@
     
   .du-modal {
 		/* #ifdef APP-PLUS */
-    height: calc(100vh -44px - var(--status-bar-height));
-    top: calc(44px + var(--status-bar-height));
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: var(--status-bar-height);
+    top: 0;
 		/* #endif */
 		/* #ifdef H5 */
-		height: calc(100vh -44px);
-    top: 44px;
+		height: 100vh;
+    top: 0;
 		/* #endif */
     position: fixed;
     right: 0;
