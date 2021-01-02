@@ -33,7 +33,7 @@
 			</scroll-view>
 			<view class="indexBar" >
 				<view class="indexBar-box" @touchstart="tStart" @touchend="tEnd" @touchmove.stop="tMove">
-					<view class="indexBar-item" v-for="(item,index) in list" :key="index" :id="index" @touchstart="getCur" @touchend="setCur"> {{item.name}}</view>
+					<view  :class="['indexBar-item', index === location ? 'choose' : '', !hidden && index === location ? 'touching' : '']" v-for="(item,index) in list" :key="index" :id="index" @touchstart="getCur" @touchend="setCur"> {{item.name}}</view>
 				</view>
 			</view>
 			<!--选择显示-->
@@ -59,6 +59,7 @@
 				listCurID: '',
 				list: [],
 				listCur: '',
+				location: 0
 			};
 		},
 		onLoad() {
@@ -93,8 +94,9 @@
 			},
 			//获取文字信息
 			getCur(e) {
-        this.hidden = false;
+				this.hidden = false;
 				this.listCur = this.list[e.target.id].name;
+				this.location = parseInt(e.target.id)
 			},
 			setCur(e) {
         this.hidden = true;
@@ -108,6 +110,7 @@
 				//判断选择区域,只有在选择区才会生效
 				if (y > offsettop) {
 					let num = parseInt((y - offsettop) / 17);
+					this.location = num
 					this.listCur = that.list[num].name
 				};
 			},
@@ -242,6 +245,20 @@
 			flex-direction: column;
 			box-shadow: 0 0 20upx rgba(0, 0, 0, 0.1);
 			border-radius: 10upx;
+			.choose {
+				background: #ff80ab;
+				color: #fff;
+			}
+			.touching {
+				border-radius: 50%;
+				width: 80upx;
+				height: 80upx;
+				line-height: 80upx;
+				font-size: 32upx;
+				opacity: .5;
+				position: relative;
+				left: -20upx;
+			}
 		}
 		&-item {
 			flex: 1;
@@ -259,7 +276,7 @@
 		top: 0;
 		right: 80upx;
 		bottom: 0;
-		background: rgba(0, 0, 0, 0.5);
+		background: #ff80ab;
 		width: 100upx;
 		height: 100upx;
 		border-radius: 10upx;

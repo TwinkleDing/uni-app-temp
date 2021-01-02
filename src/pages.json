@@ -83,7 +83,16 @@
 			}
 		},
 		{
-			"path": "pages/and/index"
+			"path": "pages/and/index",
+			"style": {
+				"navigationBarTitleText": "Android原生"
+			}
+		},
+		{
+			"path": "pages/record/index",
+			"style": {
+				"navigationBarTitleText": "记录"
+			}
 		}
 	],
 	"globalStyle": {
@@ -107,8 +116,8 @@
 			"iconPath": "static/img/picture.png",
 			"selectedIconPath": "static/img/pictureHL.png"
 		}, {
-			"pagePath": "pages/and/index",
-			"text": "原生",
+			"pagePath": "pages/record/index",
+			"text": "记录",
 			"iconPath": "static/img/tag-0.png",
 			"selectedIconPath": "static/img/tag-1.png"
 		}, {

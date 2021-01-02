@@ -213,7 +213,7 @@
 				white-space: nowrap;
 				/* #endif */
 				&-active {
-						color: #007AFF;
+					color: #007AFF;
 				}
 			}
 		}

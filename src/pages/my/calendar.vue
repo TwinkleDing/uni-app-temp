@@ -1,7 +1,7 @@
 <template>
   <view class='calendar'>
     <uni-nav-bar
-        title='我的收藏'
+        title='查看日历'
         left-icon="back"
         @clickLeft='goBack'
     />
