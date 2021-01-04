@@ -6,14 +6,17 @@
 		/>
     <view class='content'>
       <view>
-        <view v-for='item in list' :key='item.label'>
-          <uni-list>
-            <uni-list-item
-              :show-switch='true'
-              :switchChecked='item.do'
-              :title='item.label'
-              @switchChange='switchChange($event, item.label)'></uni-list-item>
-          </uni-list>
+        <view v-for='(itemDate, index) in list' :key='index'>
+          {{itemDate[0]}}
+          <view v-for='item in itemDate[1]' :key='item.label'>
+            <uni-list>
+              <uni-list-item
+                :show-switch='true'
+                :switchChecked='item.do'
+                :title='item.label'
+                @switchChange='switchChange($event, itemDate[0], item.label)'></uni-list-item>
+            </uni-list>
+          </view>
         </view>
       </view>
     </view>
@@ -53,29 +56,44 @@
             do: false
           }
         ],
-        list: [],
+        list: new Map(),
         addShow: false,
         newRecord: ''
       };
     },
     created() {
       if(!getStorage('record')) {
-        this.list = this.options;
+        this.list.set(this.formatDate(new Date()), this.options);
       }else {
         this.list = getStorage('record');
       }
     },
     methods: {
-      switchChange(e, label) {
-        this.list.map(item => {
+      switchChange(e, date, label) {
+        let data = this.list.get(date)
+        data.map(item => {
           if(item.label === label) {
             item.do = e.value;
           }
         })
+        this.list.set(date, data)
 			  setStorage('record', this.list);
       },
       showAdd() {
         this.addShow = true
+      },
+      formatDate(date) {
+        let myyear = date.getFullYear();
+        let mymonth = date.getMonth() + 1;
+        let myweekday = date.getDate();
+    
+        if (mymonth < 10) {
+          mymonth = "0" + mymonth;
+        }
+        if (myweekday < 10) {
+          myweekday = "0" + myweekday;
+        }
+        return (myyear + "-" + mymonth + "-" + myweekday);//想要什么格式都可以随便自己拼
       }
     }
   }
