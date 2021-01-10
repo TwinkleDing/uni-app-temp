@@ -156,7 +156,7 @@
 						this.fillData(res.data);
 					},
 					fail: () => {
-						this.option.tips = "网络错误，小程序端请检查合法域名";
+						this.option.tips = "网络错误";
 					},
 					complete() {
 						uni.hideLoading();

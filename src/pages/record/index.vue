@@ -7,14 +7,14 @@
     <view class='content'>
       <view>
         <view v-for='(itemDate, index) in list' :key='index'>
-          {{itemDate[0]}}
-          <view v-for='item in itemDate[1]' :key='item.label'>
+          {{itemDate.date}}
+          <view v-for='item in itemDate.data' :key='item.label'>
             <uni-list>
               <uni-list-item
                 :show-switch='true'
                 :switchChecked='item.do'
                 :title='item.label'
-                @switchChange='switchChange($event, itemDate[0], item.label)'></uni-list-item>
+                @switchChange='switchChange($event, itemDate.date, item.label)'></uni-list-item>
             </uni-list>
           </view>
         </view>
@@ -56,27 +56,39 @@
             do: false
           }
         ],
-        list: new Map(),
+        list: [],
         addShow: false,
         newRecord: ''
       };
     },
     created() {
-      if(!getStorage('record')) {
-        this.list.set(this.formatDate(new Date()), this.options);
+      if(!getStorage('record') || getStorage('record').length < 1) {
+        this.list.push({
+          date: this.formatDate(new Date()),
+          data: this.options
+        });
       }else {
         this.list = getStorage('record');
+      }
+      if(this.list[this.list.length - 1].date !== this.formatDate(new Date())) {
+        this.list.push({
+          date: this.formatDate(new Date()),
+          data: this.options
+        });
       }
     },
     methods: {
       switchChange(e, date, label) {
-        let data = this.list.get(date)
-        data.map(item => {
-          if(item.label === label) {
-            item.do = e.value;
+        this.list.map(item => {
+          
+          if(item.date === date) {
+            item.data.map((item)=>{
+              if(item.label === label) {
+                item.do = e.value;
+              }
+            })
           }
         })
-        this.list.set(date, data)
 			  setStorage('record', this.list);
       },
       showAdd() {
